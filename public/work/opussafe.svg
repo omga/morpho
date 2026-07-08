@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="OpusSafe platform visual">
+  <rect width="1200" height="800" fill="#121417"/>
+  <rect x="96" y="96" width="1008" height="608" rx="24" fill="#e9ece2"/>
+  <rect x="146" y="154" width="240" height="492" rx="20" fill="#24282c"/>
+  <rect x="430" y="154" width="280" height="220" rx="20" fill="#ff765f"/>
+  <rect x="750" y="154" width="304" height="220" rx="20" fill="#7cc8bd"/>
+  <rect x="430" y="414" width="624" height="232" rx="20" fill="#24282c"/>
+  <path d="M500 556h110l76-78 86 96 72-62 132 90" fill="none" stroke="#e9ece2" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="194" y="214" width="144" height="18" rx="9" fill="#e9ece2"/>
+  <rect x="194" y="276" width="112" height="18" rx="9" fill="#7cc8bd"/>
+  <rect x="194" y="338" width="160" height="18" rx="9" fill="#ff765f"/>
+  <rect x="194" y="400" width="92" height="18" rx="9" fill="#e9ece2"/>
+</svg>

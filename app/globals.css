@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 44 28% 94%;
+    --foreground: 210 10% 8%;
+    --card: 44 24% 91%;
+    --card-foreground: 210 10% 8%;
+    --primary: 210 10% 8%;
+    --primary-foreground: 44 28% 94%;
+    --secondary: 174 31% 86%;
+    --secondary-foreground: 210 10% 8%;
+    --muted: 42 14% 84%;
+    --muted-foreground: 210 7% 33%;
+    --accent: 12 80% 62%;
+    --accent-foreground: 210 10% 8%;
+    --border: 210 8% 18%;
+    --input: 210 8% 18%;
+    --ring: 12 80% 62%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 210 11% 7%;
+    --foreground: 42 28% 92%;
+    --card: 210 10% 10%;
+    --card-foreground: 42 28% 92%;
+    --primary: 42 28% 92%;
+    --primary-foreground: 210 11% 7%;
+    --secondary: 176 25% 18%;
+    --secondary-foreground: 42 28% 92%;
+    --muted: 210 8% 16%;
+    --muted-foreground: 42 14% 68%;
+    --accent: 12 84% 63%;
+    --accent-foreground: 210 11% 7%;
+    --border: 42 14% 78%;
+    --input: 42 14% 78%;
+    --ring: 12 84% 63%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01" on, "cv01" on;
+  }
+
+  ::selection {
+    @apply bg-accent text-accent-foreground;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .section-shell {
+    @apply container py-16 sm:py-20 lg:py-28;
+  }
+
+  .hairline {
+    @apply border-foreground/25 dark:border-foreground/20;
+  }
+
+  .work-shadow {
+    box-shadow: 0 30px 80px rgb(0 0 0 / 0.18);
+  }
+
+  .kinetic-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px hsl(var(--foreground) / 0.28);
+  }
+
+  .kinetic-grid {
+    background-image:
+      linear-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.08) 1px, transparent 1px);
+    background-size: 78px 78px;
+  }
+
+  .kinetic-mask {
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      black 12%,
+      black 82%,
+      transparent
+    );
+  }
+}

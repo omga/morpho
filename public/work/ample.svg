@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Ample app visual">
+  <rect width="1200" height="800" fill="#f0f0df"/>
+  <rect x="80" y="88" width="1040" height="624" rx="28" fill="#121417"/>
+  <circle cx="976" cy="184" r="88" fill="#ff765f"/>
+  <rect x="170" y="162" width="320" height="476" rx="44" fill="#e8f5f2"/>
+  <rect x="214" y="220" width="232" height="36" rx="18" fill="#121417"/>
+  <rect x="214" y="302" width="232" height="96" rx="18" fill="#ff765f"/>
+  <rect x="214" y="426" width="104" height="104" rx="22" fill="#7cc8bd"/>
+  <rect x="342" y="426" width="104" height="104" rx="22" fill="#f6d85f"/>
+  <path d="M620 534c118-232 254-236 396-54" fill="none" stroke="#e8f5f2" stroke-width="40" stroke-linecap="round"/>
+  <circle cx="646" cy="536" r="42" fill="#7cc8bd"/>
+  <circle cx="1018" cy="478" r="42" fill="#f6d85f"/>
+</svg>
