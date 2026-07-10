@@ -6,6 +6,8 @@ import { MotionArticle, Reveal } from "@/components/motion";
 import { projects, sectionCopy } from "@/lib/data";
 
 export function WorkSection() {
+  const marqueeItems = [...projects.slice(0, 5), ...projects.slice(0, 5)];
+
   return (
     <section id="work" className="border-t border-foreground/20">
       <div className="section-shell">
@@ -23,7 +25,32 @@ export function WorkSection() {
           </p>
         </Reveal>
 
-        <div className="grid gap-px overflow-hidden rounded-md border border-foreground/20 bg-foreground/20">
+        <div className="overflow-hidden rounded-md border border-foreground/20 bg-background/65 py-3 backdrop-blur-xl">
+          <div className="flex w-max animate-marquee gap-3">
+            {marqueeItems.map((project, index) => (
+              <div
+                key={`${project.title}-${index}`}
+                className="flex min-w-64 items-center gap-3 rounded-sm border border-foreground/15 bg-card/85 p-2"
+              >
+                <Image
+                  src={project.image}
+                  alt=""
+                  width={160}
+                  height={128}
+                  className="h-16 w-20 rounded-sm object-cover"
+                />
+                <div>
+                  <p className="font-display text-lg">{project.title}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {project.subtitle}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid gap-px overflow-hidden rounded-md border border-foreground/20 bg-foreground/20 mt-6">
           {projects.map((project, index) => (
             <MotionArticle
               key={project.title}

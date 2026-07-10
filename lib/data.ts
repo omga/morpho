@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Morpho Studio",
   tagline: "Small team. Serious output.",
   description:
-    "We create mobile apps and digital products with thoughtful design, solid engineering, and a relentless focus on business outcomes.",
+    "Mobile apps. Digital products.\nBuilt right, shipped fast.",
   email: "hello@morphostudio.dev",
   phone: "+1 604 861 2249",
   cta: "Let's Talk",
@@ -14,17 +14,17 @@ export const siteConfig = {
     { label: "STORIES", href: "#stories" },
     { label: "CONTACT", href: "#contact" }
   ],
-  heroStats: [
-    { value: "04", label: "disciplines" },
-    { value: "09", label: "selected projects" },
-    { value: "01", label: "focused team" }
-  ],
+
   hero: {
     primaryAction: "View work",
     secondaryAction: "Let's Talk",
-    kineticWords: ["SMALL", "TEAM", "SERIOUS", "OUTPUT"],
+    kineticWords: [
+      { text: "SMALL TEAM", unfilledWords: ["SMALL"] },
+      { text: "SERIOUS", unfilledWords: ["SERIOUS"] },
+      { text: "OUTPUT", unfilledWords: [] }
+    ],
     loopWords: ["BUILD", "DESIGN", "SHIP", "ITERATE"],
-    proof: "Senior product design and engineering for founders who need momentum, clarity, and a launch that feels inevitable."
+    proof: "For founders who need momentum, not meetings."
   }
 };
 
