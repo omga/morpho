@@ -1,194 +1,152 @@
 "use client";
 
-import {
-  motion,
-  type MotionValue,
-  useScroll,
-  useTransform
-} from "framer-motion";
-import { ArrowDownRight } from "lucide-react";
-import { useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/lib/data";
-import { cn } from "@/lib/utils";
+import { useEffect, useRef } from "react";
+import { animate, createTimeline, scrambleText } from "animejs";
 
-type ProgressProp = {
-  progress: MotionValue<number>;
-};
+// Each slogan has 3 lines
+const sloganTexts: string[][] = [
+  ["SMALL TEAM.", "SERIOUS OUTPUT.", "MORPO STUDIO."],
+  ["DIGITAL PRODUCTS.", "BUILT RIGHT.", "SHIPPED FAST."],
+  ["MORPO STUDIO", "THINK . BUILD .", "SHIP . REPEAT ."],
+];
 
-type KineticWord = {
-  text: string;
-  unfilledWords?: string[];
-};
+// Timing (ms)
+const SCRAMBLE_DURATION = 1000;
+const LINE_STAGGER = 300;
+const SLOGAN_HOLD = 600; // gap between slogans on the timeline
 
-function KineticGlyph({
-  char,
-  glyphIndex,
-  lineIndex,
-  progress,
-  isFilled
-}: ProgressProp & {
-  char: string;
-  glyphIndex: number;
-  lineIndex: number;
-  isFilled: boolean;
-}) {
-  const direction = lineIndex % 2 === 0 ? 1 : -1;
-  const x = useTransform(
-    progress,
-    [0, 1],
-    [0, direction * (6 + (glyphIndex % 4) * 4)]
-  );
-  const y = useTransform(
-    progress,
-    [0, 1],
-    [0, (lineIndex - 1.5) * -38 + (glyphIndex % 3) * 8]
-  );
-  const filter = useTransform(
-    progress,
-    [0, 0.56, 1],
-    ["blur(0px)", "blur(1.2px)", "blur(8px)"]
-  );
-
-  return (
-    <motion.span
-      className={cn(
-        "inline-block",
-        !isFilled && "kinetic-outline"
-      )}
-    >
-      <motion.span
-        className="inline-block will-change-transform"
-        style={{ x, y, filter }}
-      >
-        {char}
-      </motion.span>
-    </motion.span>
-  );
-}
-
-function KineticLine({
-  word,
-  lineIndex,
-  progress
-}: ProgressProp & {
-  word: KineticWord;
-  lineIndex: number;
-}) {
-  const lineX = useTransform(
-    progress,
-    [0, 1],
-    [0, lineIndex % 2 === 0 ? -38 : 38]
-  );
-  const lineY = useTransform(progress, [0, 1], [0, lineIndex * -14]);
-  const opacity = useTransform(progress, [0, 0.72, 1], [1, 0.86, 0.28]);
-
-  const text = word.text;
-  const unfilledWords = word.unfilledWords || [];
-
-  // Determine which characters are filled
-  // Start with all characters filled
-  const isFilledArray: boolean[] = new Array(text.length).fill(true);
-  
-  // Mark characters that are in unfilledWords as unfilled
-  for (const unfilledWord of unfilledWords) {
-    let searchIndex = 0;
-    while (true) {
-      const foundIndex = text.indexOf(unfilledWord, searchIndex);
-      if (foundIndex === -1) break;
-      for (let j = 0; j < unfilledWord.length; j++) {
-        if (foundIndex + j < text.length) {
-          isFilledArray[foundIndex + j] = false;
-        }
-      }
-      searchIndex = foundIndex + 1;
-    }
-  }
-
-  return (
-    <motion.div
-      aria-hidden="true"
-      className={cn(
-        "flex select-none overflow-visible whitespace-nowrap font-display text-6xl font-semibold leading-[0.82] sm:text-7xl md:text-8xl lg:text-[8rem] xl:text-[9.5rem] 2xl:text-[11rem]",
-        lineIndex === 0 && "lg:text-[7.5rem] xl:text-[8.5rem] 2xl:text-[9.5rem]",
-        lineIndex % 2 === 1 && "kinetic-outline"
-      )}
-      style={{ x: lineX, y: lineY, opacity }}
-    >
-      {text.split("").map((char, glyphIndex) => (
-        <KineticGlyph
-          key={`${text}-${char}-${glyphIndex}`}
-          char={char}
-          glyphIndex={glyphIndex}
-          lineIndex={lineIndex}
-          progress={progress}
-          isFilled={isFilledArray[glyphIndex]}
-        />
-      ))}
-    </motion.div>
-  );
-}
-
-function LoopRibbon({ progress }: ProgressProp) {
-  const y = useTransform(progress, [0, 1], [0, -64]);
-  const opacity = useTransform(progress, [0, 0.75], [1, 0.2]);
-  const ribbonItems = Array.from({ length: 4 }, () => siteConfig.hero.loopWords).flat();
-
-  return (
-    <motion.div
-      aria-hidden="true"
-      className="absolute inset-x-0 top-[85%] z-0 -rotate-2 overflow-hidden border-y border-foreground/15 bg-background/50 py-3 backdrop-blur-md dark:bg-background/30"
-      style={{ y, opacity }}
-    >
-      <div className="flex w-max animate-marquee items-center gap-5">
-        {[...ribbonItems, ...ribbonItems].map((item, index) => (
-          <span
-            key={`${item}-${index}`}
-            className="flex items-center gap-5 text-xs font-semibold uppercase text-foreground/55 sm:text-sm"
-          >
-            {item}
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-          </span>
-        ))}
-      </div>
-    </motion.div>
-  );
-}
+// Colors
+const COLOR_MUTED = "#9b9d9c";
+const COLOR_BRIGHT = "#F9F9F9";
+const COLOR_HOVER = "#ffffff";
+const COLOR_HOVER2 = "#5577DD";
 
 export function HeroSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"]
-  });
-  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -88]);
-  const backgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.03]);
-  const foregroundY = useTransform(scrollYProgress, [0, 1], [0, -34]);
-  const foregroundOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.42]);
+  const sloganRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const element = sloganRef.current;
+    if (!element) return;
+
+    const lines = [
+      element.querySelector(".slogan-line-1") as HTMLElement,
+      element.querySelector(".slogan-line-2") as HTMLElement,
+      element.querySelector(".slogan-line-3") as HTMLElement,
+    ].filter(Boolean) as HTMLElement[];
+
+    if (lines.length === 0) return;
+
+    // Build a single timeline: scramble slogan 0 -> 1 -> 2, then enable hover
+    const tl = createTimeline({
+      defaults: { duration: SCRAMBLE_DURATION, ease: "easeInOutSine" },
+    });
+
+    let cursor = 0;
+
+    sloganTexts.forEach((slogan) => {
+      slogan.forEach((text, lineIndex) => {
+        tl.add(
+          lines[lineIndex],
+          {
+            innerHTML: scrambleText({ text }),
+            delay: lineIndex * LINE_STAGGER,
+          },
+          cursor + lineIndex * LINE_STAGGER
+        );
+      });
+      // advance cursor past this slogan's scramble + hold
+      cursor += LINE_STAGGER * (lines.length - 1) + SCRAMBLE_DURATION + SLOGAN_HOLD;
+    });
+
+    // After the final scramble settles, wrap words in spans for hover
+    tl.call(() => {
+      lines.forEach((line, i) => {
+        const baseColor = i === 0 ? COLOR_MUTED : COLOR_BRIGHT;
+        // Wrap each word in a span, preserving spaces
+        const words = line.textContent?.split(/(\s+)/) ?? [];
+        line.innerHTML = words
+          .map((w) =>
+            w.trim()
+              ? `<span class="slogan-word" style="color:${baseColor}">${w}</span>`
+              : w
+          )
+          .join("");
+      });
+
+      // Attach hover handlers to each word span
+      const wordSpans = element.querySelectorAll<HTMLElement>(".slogan-word");
+      wordSpans.forEach((word) => {
+        const baseColor = word.style.color;
+        word.addEventListener("mouseenter", () => {
+          animate(word, {
+            color: COLOR_HOVER2,
+            duration: 250,
+            easing: "easeOutExpo",
+          });
+        });
+        word.addEventListener("mouseleave", () => {
+          animate(word, {
+            color: baseColor,
+            duration: 250,
+            easing: "easeOutExpo",
+          });
+        });
+      });
+    }, cursor - SLOGAN_HOLD);
+
+    return () => {
+      tl.pause();
+    };
+  }, []);
 
   return (
     <section
       id="top"
-      ref={sectionRef}
-      className="relative isolate min-h-screen overflow-hidden border-b border-foreground/20 pt-20 md:pt-24"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden border-b border-foreground/20"
     >
-      <div className="kinetic-grid absolute inset-0 z-0 opacity-70" />
-      <div className="absolute inset-x-0 top-0 z-0 h-px bg-foreground/20" />
-      <LoopRibbon progress={scrollYProgress} />
-      <motion.div
-        className="kinetic-mask pointer-events-none absolute inset-x-0 top-32 z-0 flex flex-col gap-3 px-4 sm:top-28 md:px-8 lg:top-24"
-        style={{ y: backgroundY, scale: backgroundScale }}
+      <div
+        ref={sloganRef}
+        className="pointer-events-auto absolute inset-0 z-0 flex flex-col items-center justify-center px-4 text-center cursor-pointer"
+        style={{
+          fontFamily: "'General Sans', sans-serif",
+          fontWeight: 700,
+          letterSpacing: "0.03em",
+          color: "hsl(var(--foreground))",
+        }}
       >
-        {(siteConfig.hero.kineticWords as KineticWord[]).map((word, lineIndex) => (
-          <KineticLine
-            key={`${word.text}-${lineIndex}`}
-            word={word}
-            lineIndex={lineIndex}
-            progress={scrollYProgress}
-          />
-        ))}
-      </motion.div>
-
+        <div
+          className="slogan-line-1"
+          style={{
+            fontSize: "clamp(2rem, 8vw, 4rem)",
+            lineHeight: 1,
+            color: COLOR_MUTED,
+          }}
+        >
+          {sloganTexts[0][0]}
+        </div>
+        <div
+          className="slogan-line-2"
+          style={{
+            fontSize: "clamp(3rem, 12vw, 7rem)",
+            lineHeight: 1,
+            marginTop: "0.3rem",
+            color: COLOR_BRIGHT,
+          }}
+        >
+          {sloganTexts[0][1]}
+        </div>
+        <div
+          className="slogan-line-3"
+          style={{
+            fontSize: "clamp(3rem, 12vw, 7rem)",
+            lineHeight: 1,
+            marginTop: "0.3rem",
+            color: COLOR_BRIGHT,
+          }}
+        >
+          {sloganTexts[0][2]}
+        </div>
+      </div>
     </section>
   );
 }

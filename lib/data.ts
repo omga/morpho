@@ -23,7 +23,9 @@ export const siteConfig = {
       { text: "SERIOUS", unfilledWords: ["SERIOUS"] },
       { text: "OUTPUT", unfilledWords: [] }
     ],
-    loopWords: ["BUILD", "DESIGN", "SHIP", "ITERATE"],
+    slogan: ["SMALL TEAM", "SERIOUS OUTPUT"],
+    sloganMorph: ["THINK. BUILD.", "SHIP. REPEAT."],
+    loopWords: ["THINK", "BUILD", "SHIP", "REPEAT"],
     proof: "For founders who need momentum, not meetings."
   }
 };
