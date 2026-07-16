@@ -66,63 +66,81 @@ export const projects = [
     subtitle: "Uber for home services",
     year: "2026",
     type: "Mobile product",
-    image: "/work/ample.svg"
+    image: "/work/ample.svg",
+    description:
+      "A two-sided marketplace connecting homeowners with vetted service professionals. Real-time booking, transparent pricing, and verified reviews."
   },
   {
     title: "OpusSafe",
     subtitle: "Construction safety, simplified",
     year: "2026",
     type: "SaaS platform",
-    image: "/work/opussafe.svg"
+    image: "/work/opussafe.svg",
+    description:
+      "Digital safety management for construction teams. Automated reporting, incident tracking, and compliance documentation in one platform."
   },
   {
     title: "An Elegant Mind",
     subtitle: "Mental health care, made personal",
     year: "2025",
     type: "Healthcare app",
-    image: "/work/elegant-mind.svg"
+    image: "/work/elegant-mind.svg",
+    description:
+      "A compassionate mental health platform connecting patients with therapists. Secure video sessions, mood tracking, and personalized care plans."
   },
   {
     title: "Tanin",
     subtitle: "Nutrition, figured out for you",
     year: "2025",
     type: "Wellness product",
-    image: "/work/tanin.svg"
+    image: "/work/tanin.svg",
+    description:
+      "AI-powered nutrition coaching that adapts to your body. Meal planning, macro tracking, and personalized recommendations based on your goals."
   },
   {
     title: "Havium",
     subtitle: "Property investing, clear as day",
     year: "2025",
     type: "Fintech app",
-    image: "/work/havium.svg"
+    image: "/work/havium.svg",
+    description:
+      "Property investment platform with real-time market analytics, portfolio tracking, and automated due diligence reports for informed decisions."
   },
   {
     title: "Pulsia",
     subtitle: "Health monitoring application",
     year: "2024",
     type: "Wearable companion",
-    image: "/work/pulsia.svg"
+    image: "/work/pulsia.svg",
+    description:
+      "Wearable health companion that tracks vitals, detects anomalies, and provides actionable insights. Seamless integration with medical providers."
   },
   {
     title: "MLV",
     subtitle: "Global investment, guided with precision",
     year: "2024",
     type: "Investment portal",
-    image: "/work/mlv.svg"
+    image: "/work/mlv.svg",
+    description:
+      "Global investment portal offering curated opportunities across markets. Data-driven insights, risk assessment, and portfolio diversification tools."
   },
   {
     title: "UnitIQ",
     subtitle: "Cash flow on every listing",
     year: "2024",
     type: "Real estate tool",
-    image: "/work/unitiq.svg"
+    image: "/work/unitiq.svg",
+    description:
+      "Real estate investment calculator that analyzes cash flow, ROI, and market trends. Make data-backed decisions on every property listing."
   },
   {
     title: "MWORK",
     subtitle: "Design-build, unmistakably bold",
     year: "2024",
     type: "Brand system",
-    image: "/work/mwork.svg"
+    image: "/work/mwork.svg",
+    description:
+      "A comprehensive brand system for a design-build firm. Visual identity, digital presence, and marketing materials that reflect bold craftsmanship."
   }
 ];
 
