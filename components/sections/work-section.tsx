@@ -1,13 +1,38 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, X } from "lucide-react";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { Reveal } from "@/components/motion";
 import { ProjectArt } from "@/components/project-art";
 import { Button } from "@/components/ui/button";
-import { caseStudyCopy, projects, sectionCopy } from "@/lib/data";
+import { caseStudyCopy, projects, sectionCopy, type Project } from "@/lib/data";
+
+/** Real cover image when the project has one, generated art otherwise. */
+function ProjectCover({
+  project,
+  sizes,
+  className
+}: {
+  project: Project;
+  sizes: string;
+  className?: string;
+}) {
+  if (project.images?.cover) {
+    return (
+      <Image
+        src={project.images.cover}
+        alt={`${project.title} — product imagery`}
+        fill
+        sizes={sizes}
+        className={["object-cover", className ?? ""].join(" ")}
+      />
+    );
+  }
+  return <ProjectArt project={project} variant="cover" className={className} />;
+}
 
 function ProjectCard({
   project,
@@ -46,7 +71,8 @@ function ProjectCard({
         className="grid gap-5 p-3 md:grid-cols-[8rem_1fr_14rem_16rem_3rem] md:items-center"
       >
         <div className="text-sm text-muted-foreground">
-          {String(index + 1).padStart(2, "0")} / {project.year}
+          {String(index + 1).padStart(2, "0")}
+          {project.year ? ` / ${project.year}` : ""}
         </div>
         <div>
           <h3 className="font-display text-3xl font-semibold sm:text-5xl">
@@ -57,10 +83,10 @@ function ProjectCard({
         <p className="text-sm uppercase text-muted-foreground">
           {project.type}
         </p>
-        <div className="h-44 overflow-hidden rounded-md md:h-32">
-          <ProjectArt
+        <div className="relative h-44 overflow-hidden rounded-md md:h-32">
+          <ProjectCover
             project={project}
-            variant="cover"
+            sizes="(min-width: 768px) 16rem, 100vw"
             className="transition duration-700 group-hover:scale-105"
           />
         </div>
@@ -85,8 +111,18 @@ function ProjectCard({
             style={{ willChange: "transform, opacity" }}
           >
             <div className="grid gap-6 border-t border-foreground/10 px-3 pb-6 pt-5 md:grid-cols-[1fr_1.2fr] md:items-start md:gap-10">
-              <div className="aspect-[8/5] overflow-hidden rounded-md">
-                <ProjectArt project={project} variant="screens" />
+              <div className="relative aspect-[8/5] overflow-hidden rounded-md">
+                {project.images?.gallery?.[0] || project.images?.cover ? (
+                  <Image
+                    src={project.images.gallery?.[0] ?? project.images.cover!}
+                    alt={`${project.title} — product imagery`}
+                    fill
+                    sizes="(min-width: 768px) 30rem, 100vw"
+                    className="object-cover"
+                  />
+                ) : (
+                  <ProjectArt project={project} variant="screens" />
+                )}
               </div>
               <div className="flex flex-col gap-4">
                 <div className="flex items-start justify-between gap-4">
@@ -116,12 +152,19 @@ function ProjectCard({
                   <span className="rounded-full border border-foreground/15 bg-background px-3 py-1 text-xs uppercase text-muted-foreground">
                     {project.type}
                   </span>
-                  <span className="rounded-full border border-foreground/15 bg-background px-3 py-1 text-xs uppercase text-muted-foreground">
-                    {project.year}
-                  </span>
+                  {project.year && (
+                    <span className="rounded-full border border-foreground/15 bg-background px-3 py-1 text-xs uppercase text-muted-foreground">
+                      {project.year}
+                    </span>
+                  )}
                   {project.kind === "concept" && (
                     <span className="rounded-full border border-foreground/15 bg-background px-3 py-1 text-xs uppercase text-muted-foreground">
                       {caseStudyCopy.conceptBadge}
+                    </span>
+                  )}
+                  {project.kind === "team" && (
+                    <span className="rounded-full bg-accent px-3 py-1 text-xs uppercase text-accent-foreground">
+                      {caseStudyCopy.teamBadge}
                     </span>
                   )}
                 </div>
@@ -179,8 +222,8 @@ export function WorkSection() {
                 key={`${project.slug}-${index}`}
                 className="flex min-w-64 items-center gap-3 rounded-sm border border-foreground/15 bg-card/85 p-2"
               >
-                <div className="h-16 w-20 shrink-0 overflow-hidden rounded-sm">
-                  <ProjectArt project={project} variant="cover" />
+                <div className="relative h-16 w-20 shrink-0 overflow-hidden rounded-sm">
+                  <ProjectCover project={project} sizes="5rem" />
                 </div>
                 <div>
                   <p className="font-display text-lg">{project.title}</p>

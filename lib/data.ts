@@ -35,7 +35,7 @@ export const sectionCopy = {
     eyebrow: "Our work",
     title: "Selected Work",
     description:
-      "Product concepts and explorations that show how we think, design, and build. Shipped client case studies take these slots as they launch."
+      "Shipped products from our team's track record, alongside concept explorations that show how we think. Client case studies take more of these slots as they launch."
   },
   about: {
     eyebrow: "About",
@@ -81,6 +81,14 @@ export type Project = {
   attribution?: { context: string; role?: string; team?: string };
   /** Two hues (0–360) that drive this project's generated art. */
   palette: { hue: number; hue2: number };
+  /**
+   * Real assets under /public. When present they replace the generated art:
+   * cover (~16:10) in list rows/marquee/next-card, hero (~16:9) on the case
+   * page, gallery in the case-study gallery grid.
+   */
+  images?: { cover?: string; hero?: string; gallery?: string[] };
+  /** YouTube demo — rendered as a lazy, cookie-free embed on the case page. */
+  video?: { youtubeId: string; caption?: string };
   summary: string;
   challenge: string;
   approach: string[];
@@ -92,28 +100,56 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "ample",
-    title: "Ample",
-    subtitle: "Uber for home services",
-    year: "2026",
-    type: "Mobile product",
-    industry: "Home services marketplace",
-    kind: "concept",
-    palette: { hue: 212, hue2: 252 },
+    slug: "onetouch-reveal",
+    title: "OneTouch Reveal",
+    subtitle: "Diabetes management, made meaningful",
+    year: "",
+    type: "Medical device companion",
+    industry: "Digital health / MedTech",
+    kind: "team",
+    attribution: {
+      context:
+        "Production work at Johnson & Johnson (LifeScan) on the OneTouch Reveal® product team.",
+      role: "Mobile developer — Bluetooth meter sync, health-data processing, glucose trend visualizations",
+      team: "Regulated medical-software organization; every change audited and tested to a medical bar"
+    },
+    palette: { hue: 205, hue2: 160 },
+    images: {
+      cover: "/work/onetouch-reveal/cover.avif",
+      hero: "/work/onetouch-reveal/hero.jpg",
+      gallery: [
+        "/work/onetouch-reveal/gallery-1.avif",
+        "/work/onetouch-reveal/gallery-2.avif"
+      ]
+    },
+    video: {
+      youtubeId: "S4DQNTsl5p4",
+      caption: "OneTouch Reveal® product overview"
+    },
     summary:
-      "A two-sided marketplace connecting homeowners with vetted service professionals — real-time booking, transparent pricing, and verified reviews.",
+      "The companion app for OneTouch® blood-glucose meters — Bluetooth sync, pattern insights, and secure sharing with care teams, used by millions of people managing diabetes.",
     challenge:
-      "Marketplaces die in the gap between two audiences: homeowners won't book without trust, and pros won't stay without control over their schedule and earnings. Most home-services apps solve one side and quietly lose the other.",
+      "A glucose reading only matters if it reliably reaches the app and becomes something a patient can act on. That means Bluetooth sync that survives real-world conditions, careful handling of protected health information, and visuals that reveal patterns without overwhelming — all inside the strict quality regime of regulated medical software.",
     approach: [
-      "A booking flow compressed to three screens — service, time, confirmation — with the price breakdown visible before commitment.",
-      "Verified-pro onboarding with document checks and a public work history, so trust is earned by structure rather than star ratings alone.",
-      "Live job tracking with arrival windows and in-app messaging, replacing the 'is anyone coming?' anxiety that kills repeat bookings.",
-      "A dedicated pro-side surface for schedule, routing, and earnings — the retention half most marketplace concepts skip."
+      "Implemented Bluetooth synchronization with OneTouch Verio meters — pairing, transfer, and retry behavior dependable enough that patients never have to think about it.",
+      "Built data processing that turns raw meter readings into clean, structured health records, ready for analysis and clinician review.",
+      "Developed the glucose trend visualizations — colour-coded patterns across glucose, food, insulin, and activity that patients and doctors actually read.",
+      "Worked to a medical-grade quality bar: audited changes, exhaustive testing, and documentation that passes regulatory scrutiny."
     ],
     outcome:
-      "The concept closes the full marketplace loop — search, booking, the job itself, payment, and review — in one coherent system, with the two-sided architecture worked out to a level a build team could take straight into production.",
-    services: ["Product strategy", "UX/UI design", "Mobile development"],
-    stack: ["React Native (Expo)", "TypeScript", "Supabase", "Stripe"]
+      "The app ships on iOS and Android as part of a secure cloud ecosystem, and LifeScan reports it has helped over four million people manage diabetes. This product set our bar for reliability and code quality — the standard chronic-care software demands is the one we bring to every build.",
+    services: ["Mobile development", "Bluetooth integration", "Data visualization"],
+    stack: ["iOS & Android (native)", "Bluetooth LE", "Secure health-data cloud"],
+    links: [
+      {
+        label: "App Store",
+        href: "https://apps.apple.com/us/app/onetouch-reveal-app/id651293599"
+      },
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.lifescan.reveal"
+      }
+    ]
   },
   {
     slug: "opussafe",
@@ -312,6 +348,8 @@ export const projects: Project[] = [
 export const caseStudyCopy = {
   backLabel: "All work",
   conceptBadge: "Concept",
+  teamBadge: "Shipped product",
+  linksLabel: "See it live",
   conceptNote:
     "This is an internal product exploration by Morpho Studio. The brief, constraints, and design and engineering thinking are our real work; the client and business specifics are illustrative until a shipped case study takes this slot.",
   contextTitle: "Context",
