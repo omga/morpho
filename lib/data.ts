@@ -419,12 +419,51 @@ export const contactForm = {
   title: "Ready to build your product?",
   repeatedCta: "Let's Talk",
   description:
-    "Tell us what you are making, what needs to change, or where the current product is stuck.",
+    "Tell us what you're making, what's stuck, or what needs to exist by next quarter. A short note is enough — we'll ask the right questions.",
+  promises: [
+    "A reply within 24 hours — from the founder, not a sales bot.",
+    "A clear next step, even if we're not the right fit.",
+    "Your idea stays yours. NDA on request."
+  ],
   fields: {
-    name: "Name",
-    email: "Email",
-    budget: "Budget range",
-    message: "Project notes"
+    name: { label: "Name", placeholder: "Your name" },
+    email: { label: "Email", placeholder: "you@company.com" },
+    budget: {
+      label: "Budget ballpark",
+      hint: "Optional — helps us propose the right-sized approach.",
+      placeholder: "Choose a range",
+      options: [
+        "Under $10k",
+        "$10k–$25k",
+        "$25k–$50k",
+        "$50k+",
+        "Not sure yet — help me scope it"
+      ]
+    },
+    message: {
+      label: "Project notes",
+      placeholder:
+        "What are you building? Where is it stuck? Where should it be in three months?"
+    }
   },
-  submit: "Send inquiry"
+  submit: "Start the conversation",
+  sending: "Sending…",
+  privacyNote: "We use your email only to reply. No newsletters, no sharing.",
+  success: {
+    title: "Got it — thanks",
+    body: "Your note is in the founder's inbox. You'll hear back within 24 hours. Until then, the case studies above show how we think."
+  },
+  error: {
+    prefix: "That didn't go through. Try again in a minute, or email us directly at"
+  },
+  errors: {
+    name: "Tell us your name — two characters will do.",
+    email: "That email doesn't look quite right.",
+    message: "Give us a sentence or two to work with.",
+    messageMax:
+      "That's a lot — trim it to 4000 characters and we'll dig into the rest on a call.",
+    invalid: "Some fields need another look.",
+    rateLimited: "Too many messages in a row — give it a few minutes.",
+    sendFailed: "Our mail service hiccuped. Try again in a minute."
+  }
 };
