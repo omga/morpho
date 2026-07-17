@@ -7,8 +7,9 @@ export function CustomCursor() {
   const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Skip on touch devices
+    // Skip on touch devices and for users who prefer reduced motion
     if (window.matchMedia("(pointer: coarse)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const dot = dotRef.current;
     const ring = ringRef.current;

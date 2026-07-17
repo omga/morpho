@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Property investing app visual">
-  <rect width="1200" height="800" fill="#171a1d"/>
-  <rect x="92" y="104" width="1016" height="592" rx="30" fill="#e9ede1"/>
-  <path d="M188 584 368 306l136 170 138-236 370 344Z" fill="#121417"/>
-  <path d="M230 584 370 368l104 128 78-124 272 212Z" fill="#7cc8bd"/>
-  <rect x="720" y="166" width="300" height="54" rx="27" fill="#121417"/>
-  <rect x="772" y="268" width="188" height="188" rx="24" fill="#ff765f"/>
-  <path d="m818 372 48-54 54 54v58H818Z" fill="#f3efdf"/>
-</svg>

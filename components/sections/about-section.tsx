@@ -1,6 +1,5 @@
 "use client";
 
-import { Plus } from "lucide-react";
 import { MotionDiv, Reveal } from "@/components/motion";
 import { sectionCopy, team } from "@/lib/data";
 
@@ -25,7 +24,7 @@ export function AboutSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 0.55, delay: index * 0.06 }}
-              className="group bg-background p-5"
+              className="bg-background p-5"
             >
               <div className="flex items-start justify-between gap-6">
                 <div>
@@ -34,8 +33,8 @@ export function AboutSection() {
                     {member.role}
                   </p>
                 </div>
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-foreground/25 transition group-hover:rotate-45 group-hover:bg-foreground group-hover:text-background">
-                  <Plus className="h-4 w-4" />
+                <span className="font-display text-2xl text-muted-foreground/60">
+                  {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
               <p className="mt-6 max-w-2xl leading-relaxed text-muted-foreground">

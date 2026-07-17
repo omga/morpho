@@ -7,3 +7,4 @@ dist
 .env.local
 .DS_Store
 morpho-studio.zip
+tsconfig.tsbuildinfo

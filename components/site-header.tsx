@@ -3,7 +3,6 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { siteConfig } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -13,7 +12,7 @@ export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-foreground/15 bg-background/75 backdrop-blur-xl">
       <div className="container flex h-16 items-center justify-between gap-4">
-        <a href="#top" className="font-display text-lg font-semibold">
+        <a href="/" className="font-display text-lg font-semibold">
           {siteConfig.name}
         </a>
 
@@ -31,9 +30,8 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <Button asChild variant="outline" className="hidden rounded-full sm:inline-flex">
-            <a href="#contact">{siteConfig.cta}</a>
+            <a href="/#contact">{siteConfig.cta}</a>
           </Button>
-          <ThemeToggle />
           <Button
             aria-label="Toggle menu"
             title="Toggle menu"

@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
 import { MotionDiv, Reveal } from "@/components/motion";
 import { sectionCopy, stories } from "@/lib/data";
 
@@ -30,15 +29,12 @@ export function StoriesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.55, delay: index * 0.07 }}
-              className="group flex min-h-64 flex-col justify-between rounded-md border border-foreground/20 bg-card p-5"
+              className="flex min-h-64 flex-col justify-between rounded-md border border-foreground/20 bg-card p-5"
             >
               <span className="text-sm text-muted-foreground">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <div>
-                <h3 className="font-display text-3xl">{story}</h3>
-                <ArrowUpRight className="mt-6 h-6 w-6 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </div>
+              <h3 className="font-display text-3xl">{story}</h3>
             </MotionDiv>
           ))}
         </div>

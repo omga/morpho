@@ -1,6 +1,10 @@
 "use client";
 
-import { motion, type HTMLMotionProps } from "framer-motion";
+import { motion, MotionConfig, type HTMLMotionProps } from "framer-motion";
+
+export function MotionProvider({ children }: { children: React.ReactNode }) {
+  return <MotionConfig reducedMotion="user">{children}</MotionConfig>;
+}
 
 type RevealProps = HTMLMotionProps<"div"> & {
   delay?: number;

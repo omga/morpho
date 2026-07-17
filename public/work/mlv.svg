@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Investment portal visual">
-  <rect width="1200" height="800" fill="#d9ebe7"/>
-  <rect x="96" y="96" width="1008" height="608" rx="30" fill="#111417"/>
-  <rect x="162" y="164" width="876" height="86" rx="22" fill="#eff1e6"/>
-  <rect x="162" y="304" width="188" height="300" rx="24" fill="#ff765f"/>
-  <rect x="400" y="378" width="188" height="226" rx="24" fill="#f7df74"/>
-  <rect x="638" y="250" width="188" height="354" rx="24" fill="#7cc8bd"/>
-  <path d="M210 254c182 226 454-120 736 148" fill="none" stroke="#eff1e6" stroke-width="22" stroke-linecap="round"/>
-</svg>

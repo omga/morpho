@@ -1,11 +1,20 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
 import { CustomCursor } from "@/components/custom-cursor";
+import { MotionProvider } from "@/components/motion";
 import { siteConfig } from "@/lib/data";
 
+const generalSans = localFont({
+  src: "./fonts/General-Sans-Variable.woff2",
+  variable: "--font-sans",
+  weight: "100 900",
+  display: "swap"
+});
+
 export const metadata: Metadata = {
-  title: `${siteConfig.name} - ${siteConfig.tagline}`,
+  metadataBase: new URL(siteConfig.url),
+  title: `${siteConfig.name} — ${siteConfig.tagline}`,
   description: siteConfig.description
 };
 
@@ -15,17 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={generalSans.variable}>
       <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <MotionProvider>
           <CustomCursor />
           {children}
-        </ThemeProvider>
+        </MotionProvider>
       </body>
     </html>
   );

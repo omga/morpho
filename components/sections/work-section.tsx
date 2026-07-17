@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import Link from "next/link";
 import { ArrowUpRight, X } from "lucide-react";
-import Image from "next/image";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { Reveal } from "@/components/motion";
-import { projects, sectionCopy } from "@/lib/data";
+import { ProjectArt } from "@/components/project-art";
+import { Button } from "@/components/ui/button";
+import { caseStudyCopy, projects, sectionCopy } from "@/lib/data";
 
 function ProjectCard({
   project,
@@ -22,8 +24,18 @@ function ProjectCard({
     <motion.div
       layout
       onClick={onToggle}
+      role="button"
+      tabIndex={0}
+      aria-expanded={isExpanded}
+      onKeyDown={(e) => {
+        if (e.target === e.currentTarget && (e.key === "Enter" || e.key === " ")) {
+          e.preventDefault();
+          onToggle();
+        }
+      }}
       className={[
         "group cursor-pointer overflow-hidden rounded-md bg-background transition-colors",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent",
         isExpanded ? "bg-card" : "hover:bg-card",
       ].join(" ")}
       style={{ willChange: "transform" }}
@@ -45,13 +57,11 @@ function ProjectCard({
         <p className="text-sm uppercase text-muted-foreground">
           {project.type}
         </p>
-        <div className="h-44 overflow-hidden rounded-md bg-muted md:h-32">
-          <Image
-            src={project.image}
-            alt={`${project.title} project visual`}
-            width={640}
-            height={420}
-            className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+        <div className="h-44 overflow-hidden rounded-md md:h-32">
+          <ProjectArt
+            project={project}
+            variant="cover"
+            className="transition duration-700 group-hover:scale-105"
           />
         </div>
         <ArrowUpRight className="h-6 w-6 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -75,14 +85,8 @@ function ProjectCard({
             style={{ willChange: "transform, opacity" }}
           >
             <div className="grid gap-6 border-t border-foreground/10 px-3 pb-6 pt-5 md:grid-cols-[1fr_1.2fr] md:items-start md:gap-10">
-              <div className="overflow-hidden rounded-md bg-muted">
-                <Image
-                  src={project.image}
-                  alt={`${project.title} project visual`}
-                  width={960}
-                  height={600}
-                  className="h-full w-full object-cover"
-                />
+              <div className="aspect-[8/5] overflow-hidden rounded-md">
+                <ProjectArt project={project} variant="screens" />
               </div>
               <div className="flex flex-col gap-4">
                 <div className="flex items-start justify-between gap-4">
@@ -106,15 +110,32 @@ function ProjectCard({
                   </button>
                 </div>
                 <p className="text-base leading-relaxed text-muted-foreground">
-                  {project.description}
+                  {project.summary}
                 </p>
-                <div className="mt-auto flex flex-wrap gap-2 pt-2">
+                <div className="flex flex-wrap gap-2 pt-1">
                   <span className="rounded-full border border-foreground/15 bg-background px-3 py-1 text-xs uppercase text-muted-foreground">
                     {project.type}
                   </span>
                   <span className="rounded-full border border-foreground/15 bg-background px-3 py-1 text-xs uppercase text-muted-foreground">
                     {project.year}
                   </span>
+                  {project.kind === "concept" && (
+                    <span className="rounded-full border border-foreground/15 bg-background px-3 py-1 text-xs uppercase text-muted-foreground">
+                      {caseStudyCopy.conceptBadge}
+                    </span>
+                  )}
+                </div>
+                <div className="mt-auto pt-2">
+                  <Button
+                    asChild
+                    className="rounded-full"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Link href={`/work/${project.slug}`}>
+                      Open case study
+                      <ArrowUpRight className="h-4 w-4" />
+                    </Link>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -155,16 +176,12 @@ export function WorkSection() {
           <div className="flex w-max animate-marquee gap-3">
             {marqueeItems.map((project, index) => (
               <div
-                key={`${project.title}-${index}`}
+                key={`${project.slug}-${index}`}
                 className="flex min-w-64 items-center gap-3 rounded-sm border border-foreground/15 bg-card/85 p-2"
               >
-                <Image
-                  src={project.image}
-                  alt=""
-                  width={160}
-                  height={128}
-                  className="h-16 w-20 rounded-sm object-cover"
-                />
+                <div className="h-16 w-20 shrink-0 overflow-hidden rounded-sm">
+                  <ProjectArt project={project} variant="cover" />
+                </div>
                 <div>
                   <p className="font-display text-lg">{project.title}</p>
                   <p className="text-xs text-muted-foreground">
@@ -181,7 +198,7 @@ export function WorkSection() {
             <div className="flex flex-col gap-px">
               {projects.map((project, index) => (
                 <motion.div
-                  key={project.title}
+                  key={project.slug}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}

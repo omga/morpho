@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
 import { MotionDiv, Reveal } from "@/components/motion";
 import { sectionCopy, services } from "@/lib/data";
 
@@ -30,7 +29,7 @@ export function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 0.55, delay: index * 0.06 }}
-              className="group grid gap-5 bg-background p-5 transition hover:bg-card md:grid-cols-[8rem_0.8fr_1fr_3rem] md:items-center"
+              className="grid gap-5 bg-background p-5 transition hover:bg-card md:grid-cols-[8rem_0.8fr_1fr] md:items-center"
             >
               <span className="font-display text-3xl text-muted-foreground">
                 {service.index}
@@ -39,7 +38,6 @@ export function ServicesSection() {
                 {service.title}
               </h3>
               <p className="leading-relaxed text-muted-foreground">{service.text}</p>
-              <ArrowUpRight className="h-6 w-6 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
             </MotionDiv>
           ))}
         </div>

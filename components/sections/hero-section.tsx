@@ -1,25 +1,26 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { animate, createTimeline, scrambleText } from "animejs";
+import { createTimeline, scrambleText } from "animejs";
+import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/lib/data";
 
-// Each slogan has 3 lines
-const sloganTexts: string[][] = [
-  ["SMALL TEAM.", "SERIOUS OUTPUT.", "MORPO STUDIO."],
-  ["DIGITAL PRODUCTS.", "BUILT RIGHT.", "SHIPPED FAST."],
-  ["MORPO STUDIO", "THINK . BUILD .", "SHIP . REPEAT ."],
-];
+const { slogans } = siteConfig.hero;
 
 // Timing (ms)
 const SCRAMBLE_DURATION = 1000;
 const LINE_STAGGER = 300;
 const SLOGAN_HOLD = 600; // gap between slogans on the timeline
 
-// Colors
-const COLOR_MUTED = "#9b9d9c";
-const COLOR_BRIGHT = "#F9F9F9";
-const COLOR_HOVER = "#ffffff";
-const COLOR_HOVER2 = "#5577DD";
+// Wrap each word in a span so single words can react to hover (styled in globals.css)
+function wrapWords(lines: HTMLElement[]) {
+  lines.forEach((line) => {
+    const words = line.textContent?.split(/(\s+)/) ?? [];
+    line.innerHTML = words
+      .map((w) => (w.trim() ? `<span class="slogan-word">${w}</span>` : w))
+      .join("");
+  });
+}
 
 export function HeroSection() {
   const sloganRef = useRef<HTMLDivElement>(null);
@@ -28,13 +29,15 @@ export function HeroSection() {
     const element = sloganRef.current;
     if (!element) return;
 
-    const lines = [
-      element.querySelector(".slogan-line-1") as HTMLElement,
-      element.querySelector(".slogan-line-2") as HTMLElement,
-      element.querySelector(".slogan-line-3") as HTMLElement,
-    ].filter(Boolean) as HTMLElement[];
-
+    const lines = Array.from(
+      element.querySelectorAll<HTMLElement>(".slogan-line")
+    );
     if (lines.length === 0) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      wrapWords(lines);
+      return;
+    }
 
     // Build a single timeline: scramble slogan 0 -> 1 -> 2, then enable hover
     const tl = createTimeline({
@@ -43,7 +46,7 @@ export function HeroSection() {
 
     let cursor = 0;
 
-    sloganTexts.forEach((slogan) => {
+    slogans.forEach((slogan) => {
       slogan.forEach((text, lineIndex) => {
         tl.add(
           lines[lineIndex],
@@ -58,41 +61,7 @@ export function HeroSection() {
       cursor += LINE_STAGGER * (lines.length - 1) + SCRAMBLE_DURATION + SLOGAN_HOLD;
     });
 
-    // After the final scramble settles, wrap words in spans for hover
-    tl.call(() => {
-      lines.forEach((line, i) => {
-        const baseColor = i === 0 ? COLOR_MUTED : COLOR_BRIGHT;
-        // Wrap each word in a span, preserving spaces
-        const words = line.textContent?.split(/(\s+)/) ?? [];
-        line.innerHTML = words
-          .map((w) =>
-            w.trim()
-              ? `<span class="slogan-word" style="color:${baseColor}">${w}</span>`
-              : w
-          )
-          .join("");
-      });
-
-      // Attach hover handlers to each word span
-      const wordSpans = element.querySelectorAll<HTMLElement>(".slogan-word");
-      wordSpans.forEach((word) => {
-        const baseColor = word.style.color;
-        word.addEventListener("mouseenter", () => {
-          animate(word, {
-            color: COLOR_HOVER2,
-            duration: 250,
-            easing: "easeOutExpo",
-          });
-        });
-        word.addEventListener("mouseleave", () => {
-          animate(word, {
-            color: baseColor,
-            duration: 250,
-            easing: "easeOutExpo",
-          });
-        });
-      });
-    }, cursor - SLOGAN_HOLD);
+    tl.call(() => wrapWords(lines), cursor - SLOGAN_HOLD);
 
     return () => {
       tl.pause();
@@ -102,50 +71,50 @@ export function HeroSection() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden border-b border-foreground/20"
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden border-b border-foreground/20 px-4 pt-16"
     >
+      <h1 className="sr-only">{siteConfig.hero.headline}</h1>
+
       <div
         ref={sloganRef}
-        className="pointer-events-auto absolute inset-0 z-0 flex flex-col items-center justify-center px-4 text-center cursor-pointer"
-        style={{
-          fontFamily: "'General Sans', sans-serif",
-          fontWeight: 700,
-          letterSpacing: "0.03em",
-          color: "hsl(var(--foreground))",
-        }}
+        aria-hidden
+        className="flex cursor-pointer flex-col items-center text-center font-display font-bold tracking-[0.03em]"
       >
         <div
-          className="slogan-line-1"
-          style={{
-            fontSize: "clamp(2rem, 8vw, 4rem)",
-            lineHeight: 1,
-            color: COLOR_MUTED,
-          }}
+          className="slogan-line text-muted-foreground"
+          style={{ fontSize: "clamp(2rem, 8vw, 4rem)", lineHeight: 1 }}
         >
-          {sloganTexts[0][0]}
+          {slogans[0][0]}
         </div>
         <div
-          className="slogan-line-2"
-          style={{
-            fontSize: "clamp(3rem, 12vw, 7rem)",
-            lineHeight: 1,
-            marginTop: "0.3rem",
-            color: COLOR_BRIGHT,
-          }}
+          className="slogan-line mt-2 text-foreground"
+          style={{ fontSize: "clamp(3rem, 12vw, 7rem)", lineHeight: 1 }}
         >
-          {sloganTexts[0][1]}
+          {slogans[0][1]}
         </div>
         <div
-          className="slogan-line-3"
-          style={{
-            fontSize: "clamp(3rem, 12vw, 7rem)",
-            lineHeight: 1,
-            marginTop: "0.3rem",
-            color: COLOR_BRIGHT,
-          }}
+          className="slogan-line mt-2 text-foreground"
+          style={{ fontSize: "clamp(3rem, 12vw, 7rem)", lineHeight: 1 }}
         >
-          {sloganTexts[0][2]}
+          {slogans[0][2]}
         </div>
+      </div>
+
+      <p className="mt-10 text-sm uppercase tracking-[0.2em] text-muted-foreground">
+        {siteConfig.hero.proof}
+      </p>
+
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <Button asChild size="lg" className="rounded-full">
+          <a href={siteConfig.hero.primaryAction.href}>
+            {siteConfig.hero.primaryAction.label}
+          </a>
+        </Button>
+        <Button asChild size="lg" variant="outline" className="rounded-full">
+          <a href={siteConfig.hero.secondaryAction.href}>
+            {siteConfig.hero.secondaryAction.label}
+          </a>
+        </Button>
       </div>
     </section>
   );
