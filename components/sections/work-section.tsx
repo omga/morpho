@@ -114,7 +114,12 @@ function ProjectCard({
               <div className="relative aspect-[8/5] overflow-hidden rounded-md">
                 {project.images?.gallery?.[0] || project.images?.cover ? (
                   <Image
-                    src={project.images.gallery?.[0] ?? project.images.cover!}
+                    src={
+                      // portrait screenshots crop badly at 8:5 — prefer the cover
+                      (project.images.galleryAspect === "portrait"
+                        ? project.images.cover ?? project.images.gallery?.[0]
+                        : project.images.gallery?.[0] ?? project.images.cover)!
+                    }
                     alt={`${project.title} — product imagery`}
                     fill
                     sizes="(min-width: 768px) 30rem, 100vw"
