@@ -91,6 +91,8 @@ export type Project = {
     cover?: string;
     hero?: string;
     gallery?: string[];
+    /** Cell shape for the gallery grid. Defaults to square. */
+    galleryAspect?: "square" | "portrait";
     stack?: { src: string; width: number; height: number }[];
   };
   /** YouTube demo — rendered as a lazy, cookie-free embed on the case page. */
@@ -123,11 +125,11 @@ export const projects: Project[] = [
     },
     palette: { hue: 205, hue2: 160 },
     images: {
-      cover: "/work/onetouch-reveal/cover.avif",
+      cover: "/work/onetouch-reveal/cover.jpg",
       hero: "/work/onetouch-reveal/hero.jpg",
       gallery: [
         "/work/onetouch-reveal/gallery-1.avif",
-        "/work/onetouch-reveal/gallery-2.avif"
+        "/work/onetouch-reveal/gallery-3.avif",
       ]
     },
     video: {
@@ -167,10 +169,9 @@ export const projects: Project[] = [
     type: "E-commerce design",
     industry: "Wine & hospitality",
     kind: "team",
-    badge: "Design showcase",
     attribution: {
       context:
-        "Designed by Katerina Yanchuk — Morpho Studio's art director. Published on Behance.",
+        "A shipped e-commerce experience for a premium Swiss wine business. Design led by Katerina Yanchuk, Morpho Studio's art director.",
       role: "Art direction, UX/UI, and the editorial design system across desktop and mobile"
     },
     palette: { hue: 35, hue2: 350 },
@@ -213,6 +214,58 @@ export const projects: Project[] = [
     ]
   },
   {
+    slug: "simplepractice",
+    title: "SimplePractice",
+    subtitle: "A private practice, in your pocket",
+    year: "2023",
+    type: "Practice management app",
+    industry: "Digital health / SaaS",
+    kind: "team",
+    attribution: {
+      context:
+        "Production Android work at SimplePractice, 2023 — the leading practice-management platform for health and wellness professionals.",
+      role: "Android development on the clinician app — the HIPAA-compliant mobile arm of the platform"
+    },
+    palette: { hue: 168, hue2: 210 },
+    images: {
+      cover: "/work/simplepractice/cover.png",
+      hero: "/work/simplepractice/hero.webp",
+      gallery: [
+        "/work/simplepractice/sp-1.webp",
+        "/work/simplepractice/sp-2.webp",
+        "/work/simplepractice/sp-3.webp",
+        "/work/simplepractice/sp-4.webp",
+        "/work/simplepractice/sp-5.webp",
+        "/work/simplepractice/sp-6.webp"
+      ],
+      galleryAspect: "portrait"
+    },
+    summary:
+      "The HIPAA-compliant companion app for SimplePractice — the platform more than 250,000 health and wellness practitioners run their businesses on. Scheduling, session notes, secure messaging, documents, and payments, anywhere.",
+    challenge:
+      "Clinicians don't run their practices at a desk — they run them between sessions, from hallways and waiting rooms. Putting protected health information on a personal phone raises the stakes: the app has to mirror a deep cloud platform while defending every screen with medical-grade security, without ever feeling like security software.",
+    approach: [
+      "The full admin day, mobile: scheduling, session notes, document upload and sharing, invoicing, and payment processing in one focused clinician app.",
+      "Security engineered in layers — biometric access, in-app passcode, bank-level encryption, and quick-swipe privacy protection for opening the app around other people.",
+      "Client communication kept inside the HIPAA boundary with secure messaging, instead of leaking into SMS and email.",
+      "Companion-app discipline: a fast, focused mobile mirror of the cloud platform, built for the in-between moments where practices actually get managed."
+    ],
+    outcome:
+      "The clinician app ships on Android and iOS as the mobile arm of a platform trusted by more than 250,000 practitioners. Building inside a HIPAA-regulated codebase at that scale is the reliability discipline we bring to every product we take on.",
+    services: ["Mobile development", "Security engineering", "HIPAA compliance"],
+    stack: ["Android (Kotlin)", "Biometric auth", "Encrypted storage"],
+    links: [
+      {
+        label: "App Store",
+        href: "https://apps.apple.com/us/app/simplepractice-for-clinicians/id738207604"
+      },
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.simplepractice.simple"
+      }
+    ]
+  },
+  {
     slug: "opussafe",
     title: "OpusSafe",
     subtitle: "Construction safety, simplified",
@@ -235,30 +288,6 @@ export const projects: Project[] = [
       "The concept demonstrates how consumer-grade interaction design changes adoption in an industry that hates software — the field flows were pressure-tested against real site constraints like connectivity, gloves, and time pressure.",
     services: ["UX/UI design", "Web development", "Mobile development"],
     stack: ["Next.js", "React Native", "PostgreSQL", "AWS S3"]
-  },
-  {
-    slug: "an-elegant-mind",
-    title: "An Elegant Mind",
-    subtitle: "Mental health care, made personal",
-    year: "2025",
-    type: "Healthcare app",
-    industry: "Digital health",
-    kind: "concept",
-    palette: { hue: 264, hue2: 300 },
-    summary:
-      "A compassionate mental health platform connecting patients with therapists — secure video sessions, mood tracking, and personalized care plans.",
-    challenge:
-      "Finding a therapist is a high-friction, high-stakes search made worse by bad matching and clinical-feeling software. People arrive at these products in a vulnerable state; every dark pattern and every extra form costs someone care.",
-    approach: [
-      "An intake flow written in plain, warm language that doubles as the matching engine — clinical rigor without clinical tone.",
-      "Secure video sessions built on a privacy-first architecture, with session notes owned by the care relationship rather than the platform.",
-      "Mood journaling designed as a lightweight daily loop that gives therapists longitudinal signal between sessions.",
-      "Therapist-side care plans and progress views, because retention in care is a two-sided problem too."
-    ],
-    outcome:
-      "The concept shows how far interface tone and information architecture can lower the barrier to starting care — and works out the privacy architecture that any real build in this space has to get right on day one.",
-    services: ["Product strategy", "UX/UI design", "Web development"],
-    stack: ["Next.js", "WebRTC", "Node.js", "PostgreSQL"]
   },
   {
     slug: "tanin",

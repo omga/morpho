@@ -210,7 +210,7 @@ export default function CaseStudyPage({
           {project.video ||
           project.images?.stack?.length ||
           project.images?.gallery?.length ? (
-            <Reveal className="grid gap-4">
+            <div className="grid gap-4">
               {project.video && (
                 <VideoEmbed
                   youtubeId={project.video.youtubeId}
@@ -234,24 +234,38 @@ export default function CaseStudyPage({
                 </div>
               ))}
               {project.images?.gallery && project.images.gallery.length > 0 && (
-                <div className="grid gap-4 sm:grid-cols-2">
+                <div
+                  className={
+                    project.images.galleryAspect === "portrait"
+                      ? "grid grid-cols-2 gap-4 sm:grid-cols-3"
+                      : "grid gap-4 sm:grid-cols-2"
+                  }
+                >
                   {project.images.gallery.map((src) => (
                     <div
                       key={src}
-                      className="relative aspect-square overflow-hidden rounded-md border border-foreground/20"
+                      className={
+                        project.images?.galleryAspect === "portrait"
+                          ? "relative aspect-[1/2] overflow-hidden rounded-md border border-foreground/20"
+                          : "relative aspect-square overflow-hidden rounded-md border border-foreground/20"
+                      }
                     >
                       <Image
                         src={src}
                         alt={`${project.title} — product imagery`}
                         fill
-                        sizes="(min-width: 640px) 44rem, 100vw"
+                        sizes={
+                          project.images?.galleryAspect === "portrait"
+                            ? "(min-width: 640px) 30rem, 50vw"
+                            : "(min-width: 640px) 44rem, 100vw"
+                        }
                         className="object-cover"
                       />
                     </div>
                   ))}
                 </div>
               )}
-            </Reveal>
+            </div>
           ) : (
             <Reveal className="grid gap-4 md:grid-cols-2">
               <div className="aspect-[8/5] overflow-hidden rounded-md border border-foreground/20">
