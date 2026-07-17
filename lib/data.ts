@@ -266,6 +266,45 @@ export const projects: Project[] = [
     ]
   },
   {
+    slug: "mindmate",
+    title: "MindMate",
+    subtitle: "An AI companion, shipped before the gold rush",
+    year: "2023",
+    type: "AI mobile app",
+    industry: "Consumer AI",
+    kind: "team",
+    attribution: {
+      context:
+        "An in-house Morpho product — designed, built, and shipped end-to-end by our team in early 2023.",
+      role: "Product design, Flutter engineering, and AI integration — the full cycle from idea to app stores"
+    },
+    palette: { hue: 262, hue2: 190 },
+    images: {
+      cover: "/work/mindmate/cover.png",
+      hero: "/work/mindmate/cover.png",
+      gallery: [
+        "/work/mindmate/mindmate-1.png",
+        "/work/mindmate/mindmate-2.webp",
+        "/work/mindmate/mindmate-3.webp",
+        "/work/mindmate/mindmate-4.png"
+      ]
+    },
+    summary:
+      "A conversational AI companion with chat and image generation — designed, built in Flutter, and shipped in early 2023, when consumer AI apps barely existed.",
+    challenge:
+      "In early 2023 there was no playbook for consumer AI: the APIs were weeks old, latency and costs were wild, and nobody knew what an AI product should feel like on a phone. The real race was shipping something people could actually use while 'first' was still on the table.",
+    approach: [
+      "Conversational chat and image generation in one pocket companion, built on the OpenAI chat and image APIs within weeks of their release.",
+      "A prompt-template library that turned a blank chat box into one-tap use cases — long before 'prompt engineering' had a name.",
+      "One Flutter codebase shipping to both iOS and Android — small-team economics without sacrificing product feel.",
+      "Engineered around the realities of day-one AI APIs: rate limits, unpredictable latency, and token costs handled invisibly for the user."
+    ],
+    outcome:
+      "MindMate shipped in early 2023 — months ahead of the wave of AI companions that followed — and passed 5,000 organic installs on Google Play, where it's still live today. It remains our proof that a small team can take a brand-new technology from zero to shipped product in weeks.",
+    services: ["Product design", "Flutter development", "AI integration"],
+    stack: ["Flutter (iOS & Android)", "OpenAI chat + image APIs", "Prompt template system"]
+  },
+  {
     slug: "opussafe",
     title: "OpusSafe",
     subtitle: "Construction safety, simplified",
@@ -288,30 +327,6 @@ export const projects: Project[] = [
       "The concept demonstrates how consumer-grade interaction design changes adoption in an industry that hates software — the field flows were pressure-tested against real site constraints like connectivity, gloves, and time pressure.",
     services: ["UX/UI design", "Web development", "Mobile development"],
     stack: ["Next.js", "React Native", "PostgreSQL", "AWS S3"]
-  },
-  {
-    slug: "tanin",
-    title: "Tanin",
-    subtitle: "Nutrition, figured out for you",
-    year: "2025",
-    type: "Wellness product",
-    industry: "Health & wellness",
-    kind: "concept",
-    palette: { hue: 145, hue2: 95 },
-    summary:
-      "AI-powered nutrition coaching that adapts to your body — meal planning, macro tracking, and recommendations that adjust to your goals.",
-    challenge:
-      "Nutrition apps churn because logging is a chore and plans are generic. By week three, the streak breaks, the plan no longer matches real life, and the app gets deleted — the problem is adherence, not information.",
-    approach: [
-      "Photo and voice logging that removes the food-database scavenger hunt from daily tracking.",
-      "Adaptive targets that recalibrate weekly from actual adherence, instead of punishing users for missing a fixed plan.",
-      "An AI coaching layer with a defined personality — direct, non-judgmental — and hard guardrails around medical claims.",
-      "Meal plans generated from what the user actually eats and buys, not an idealized pantry."
-    ],
-    outcome:
-      "The concept reframes the category around adherence mechanics rather than data entry, and maps where an AI layer genuinely earns its place in the loop — and where it's just decoration.",
-    services: ["Product strategy", "UX/UI design", "Mobile development", "AI integration"],
-    stack: ["React Native", "TypeScript", "LLM pipeline", "HealthKit"]
   },
   {
     slug: "havium",
