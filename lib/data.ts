@@ -84,11 +84,19 @@ export type Project = {
   /**
    * Real assets under /public. When present they replace the generated art:
    * cover (~16:10) in list rows/marquee/next-card, hero (~16:9) on the case
-   * page, gallery in the case-study gallery grid.
+   * page, gallery in the case-study grid, stack as a full-width Behance-style
+   * flow (dimensions required to avoid layout shift).
    */
-  images?: { cover?: string; hero?: string; gallery?: string[] };
+  images?: {
+    cover?: string;
+    hero?: string;
+    gallery?: string[];
+    stack?: { src: string; width: number; height: number }[];
+  };
   /** YouTube demo — rendered as a lazy, cookie-free embed on the case page. */
   video?: { youtubeId: string; caption?: string };
+  /** Overrides the kind-derived badge ("Concept" / "Shipped product"). */
+  badge?: string;
   summary: string;
   challenge: string;
   approach: string[];
@@ -148,6 +156,59 @@ export const projects: Project[] = [
       {
         label: "Google Play",
         href: "https://play.google.com/store/apps/details?id=com.lifescan.reveal"
+      }
+    ]
+  },
+  {
+    slug: "vivre-le-vin",
+    title: "Vivre le Vin",
+    subtitle: "Swiss wine, sold with editorial soul",
+    year: "2025",
+    type: "E-commerce design",
+    industry: "Wine & hospitality",
+    kind: "team",
+    badge: "Design showcase",
+    attribution: {
+      context:
+        "Designed by Katerina Yanchuk — Morpho Studio's art director. Published on Behance.",
+      role: "Art direction, UX/UI, and the editorial design system across desktop and mobile"
+    },
+    palette: { hue: 35, hue2: 350 },
+    images: {
+      cover: "/work/vivre-le-vin/cover.png",
+      hero: "/work/vivre-le-vin/hero.webp",
+      stack: [
+        { src: "/work/vivre-le-vin/vlv-02.webp", width: 1400, height: 914 },
+        { src: "/work/vivre-le-vin/vlv-03.webp", width: 1400, height: 914 },
+        { src: "/work/vivre-le-vin/vlv-04.webp", width: 1400, height: 914 },
+        { src: "/work/vivre-le-vin/vlv-05.webp", width: 1400, height: 981 },
+        { src: "/work/vivre-le-vin/vlv-06.webp", width: 1400, height: 914 },
+        { src: "/work/vivre-le-vin/vlv-07.webp", width: 1400, height: 3122 },
+        { src: "/work/vivre-le-vin/vlv-08.webp", width: 1400, height: 895 },
+        { src: "/work/vivre-le-vin/vlv-09.webp", width: 1400, height: 1597 },
+        { src: "/work/vivre-le-vin/vlv-10.webp", width: 1400, height: 1318 },
+        { src: "/work/vivre-le-vin/vlv-11.webp", width: 1400, height: 981 },
+        { src: "/work/vivre-le-vin/vlv-12.webp", width: 1400, height: 1470 }
+      ]
+    },
+    summary:
+      "VLV — a digital home for Swiss wine: an e-commerce catalog and invitation-only tasting club, designed with the pace and elegance of a fine print magazine.",
+    challenge:
+      "Fine wine is bought slowly — on atmosphere, story, and trust — nothing like the click-rush of standard e-commerce. VLV needed a catalog, a shop, and a tasting-events club that feel like leafing through a beautifully printed magazine without losing the mechanics of search, cart, and checkout.",
+    approach: [
+      "An editorial layout system — generous whitespace, refined serif display type, and photography-first pages that sell terroir before price.",
+      "A warm cellar palette of cream, oak, and burgundy drawn from the product itself, so the interface recedes and the wine leads.",
+      "Commerce patterns woven in quietly: search, wishlist, account, and cart sit inside the elegance instead of breaking it.",
+      "Invitation-only dégustation evenings designed as a club — event cards, mailing-list capture, and RSVP flows that turn scarcity into a feature."
+    ],
+    outcome:
+      "A complete, presentation-grade design system for wine commerce — desktop and mobile, homepage to checkout to tasting club — published on Behance and ready for a build team to take to production.",
+    services: ["Art direction", "UX/UI design", "E-commerce design"],
+    stack: ["Design system", "Desktop & mobile web", "Editorial typography"],
+    links: [
+      {
+        label: "View on Behance",
+        href: "https://www.behance.net/gallery/229657927/VLV"
       }
     ]
   },
@@ -318,30 +379,6 @@ export const projects: Project[] = [
       "The concept turns a spreadsheet ritual into a sub-minute workflow, and shows how a sharply-scoped single-purpose tool can out-compete platforms by respecting one job completely.",
     services: ["UX/UI design", "Web development"],
     stack: ["Next.js", "TypeScript", "Supabase"]
-  },
-  {
-    slug: "mwork",
-    title: "MWORK",
-    subtitle: "Design-build, unmistakably bold",
-    year: "2024",
-    type: "Brand system",
-    industry: "Design-build / AEC",
-    kind: "concept",
-    palette: { hue: 18, hue2: 45 },
-    summary:
-      "A comprehensive brand system for a design-build firm — visual identity, digital presence, and materials that reflect bold craftsmanship.",
-    challenge:
-      "Design-build firms sell craft, but most present themselves with template websites and clip-art proposals. The gap between the quality of the physical work and the quality of the brand costs them exactly the clients they want.",
-    approach: [
-      "An identity system built on construction's own visual language — measurements, plans, material honesty — rather than borrowed tech-startup polish.",
-      "Typographic and color infrastructure specified for every touchpoint, from site signage to proposal decks.",
-      "A digital presence where the work photography leads and the interface stays out of its way.",
-      "A rollout kit with templates the firm's own team can maintain without a designer on retainer."
-    ],
-    outcome:
-      "The concept demonstrates the studio's brand range beyond product UI — a complete identity architecture where every artifact, digital or printed, is recognizably one system.",
-    services: ["Brand identity", "UX/UI design", "Web development"],
-    stack: ["Figma", "Next.js", "Sanity CMS"]
   }
 ];
 

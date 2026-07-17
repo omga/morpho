@@ -42,6 +42,13 @@ export default function CaseStudyPage({
 
   const project = projects[index];
   const next = projects[(index + 1) % projects.length];
+  const badgeLabel =
+    project.badge ??
+    (project.kind === "concept"
+      ? caseStudyCopy.conceptBadge
+      : project.kind === "team"
+        ? caseStudyCopy.teamBadge
+        : null);
 
   return (
     <main className="min-h-screen overflow-hidden">
@@ -67,14 +74,15 @@ export default function CaseStudyPage({
                   <span>{project.year}</span>
                 </>
               )}
-              {project.kind === "concept" && (
-                <span className="rounded-full border border-accent/40 px-3 py-1 text-xs text-accent">
-                  {caseStudyCopy.conceptBadge}
-                </span>
-              )}
-              {project.kind === "team" && (
-                <span className="rounded-full bg-accent px-3 py-1 text-xs text-accent-foreground">
-                  {caseStudyCopy.teamBadge}
+              {badgeLabel && (
+                <span
+                  className={
+                    project.kind === "concept"
+                      ? "rounded-full border border-accent/40 px-3 py-1 text-xs text-accent"
+                      : "rounded-full bg-accent px-3 py-1 text-xs text-accent-foreground"
+                  }
+                >
+                  {badgeLabel}
                 </span>
               )}
             </div>
@@ -199,7 +207,9 @@ export default function CaseStudyPage({
           </Reveal>
 
           {/* Gallery — video takes the centerpiece when the project has one */}
-          {project.video || project.images?.gallery?.length ? (
+          {project.video ||
+          project.images?.stack?.length ||
+          project.images?.gallery?.length ? (
             <Reveal className="grid gap-4">
               {project.video && (
                 <VideoEmbed
@@ -208,6 +218,21 @@ export default function CaseStudyPage({
                   caption={project.video.caption}
                 />
               )}
+              {project.images?.stack?.map(({ src, width, height }) => (
+                <div
+                  key={src}
+                  className="overflow-hidden rounded-md border border-foreground/20"
+                >
+                  <Image
+                    src={src}
+                    alt={`${project.title} — design detail`}
+                    width={width}
+                    height={height}
+                    sizes="(min-width: 1440px) 88rem, 100vw"
+                    className="h-auto w-full"
+                  />
+                </div>
+              ))}
               {project.images?.gallery && project.images.gallery.length > 0 && (
                 <div className="grid gap-4 sm:grid-cols-2">
                   {project.images.gallery.map((src) => (

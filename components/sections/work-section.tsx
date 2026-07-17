@@ -157,14 +157,13 @@ function ProjectCard({
                       {project.year}
                     </span>
                   )}
-                  {project.kind === "concept" && (
+                  {project.kind === "concept" ? (
                     <span className="rounded-full border border-foreground/15 bg-background px-3 py-1 text-xs uppercase text-muted-foreground">
-                      {caseStudyCopy.conceptBadge}
+                      {project.badge ?? caseStudyCopy.conceptBadge}
                     </span>
-                  )}
-                  {project.kind === "team" && (
+                  ) : (
                     <span className="rounded-full bg-accent px-3 py-1 text-xs uppercase text-accent-foreground">
-                      {caseStudyCopy.teamBadge}
+                      {project.badge ?? caseStudyCopy.teamBadge}
                     </span>
                   )}
                 </div>
