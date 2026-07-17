@@ -113,7 +113,7 @@ export const projects: Project[] = [
     slug: "onetouch-reveal",
     title: "OneTouch Reveal",
     subtitle: "Diabetes management, made meaningful",
-    year: "",
+    year: "2018–2019",
     type: "Medical device companion",
     industry: "Digital health / MedTech",
     kind: "team",
@@ -147,7 +147,7 @@ export const projects: Project[] = [
       "Worked to a medical-grade quality bar: audited changes, exhaustive testing, and documentation that passes regulatory scrutiny."
     ],
     outcome:
-      "The app ships on iOS and Android as part of a secure cloud ecosystem, and LifeScan reports it has helped over four million people manage diabetes. This product set our bar for reliability and code quality — the standard chronic-care software demands is the one we bring to every build.",
+      "Shipped in 2019 and still in production today — the app runs as part of a secure cloud ecosystem that LifeScan reports has helped over four million people manage diabetes. Software that survives six-plus years in a regulated market is the quality bar we bring to every build.",
     services: ["Mobile development", "Bluetooth integration", "Data visualization"],
     stack: ["iOS & Android (native)", "Bluetooth LE", "Secure health-data cloud"],
     links: [
