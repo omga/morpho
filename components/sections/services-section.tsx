@@ -25,11 +25,16 @@ export function ServicesSection() {
           {services.map((service, index) => (
             <MotionDiv
               key={service.title}
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ duration: 0.55, delay: index * 0.06 }}
-              className="grid gap-5 bg-background p-5 transition hover:bg-card md:grid-cols-[8rem_0.8fr_1fr] md:items-center"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.6,
+                delay: Math.min(index * 0.05, 0.2),
+                ease: [0.22, 1, 0.36, 1]
+              }}
+              style={{ willChange: "transform, opacity" }}
+              className="grid gap-5 bg-background p-5 transition-colors hover:bg-card md:grid-cols-[8rem_0.8fr_1fr] md:items-center"
             >
               <span className="font-display text-3xl text-muted-foreground">
                 {service.index}

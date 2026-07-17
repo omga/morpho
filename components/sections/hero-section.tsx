@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { createTimeline, scrambleText } from "animejs";
+import { Magnetic } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/data";
 
@@ -105,16 +106,20 @@ export function HeroSection() {
       </p>
 
       <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <Button asChild size="lg" className="rounded-full">
-          <a href={siteConfig.hero.primaryAction.href}>
-            {siteConfig.hero.primaryAction.label}
-          </a>
-        </Button>
-        <Button asChild size="lg" variant="outline" className="rounded-full">
-          <a href={siteConfig.hero.secondaryAction.href}>
-            {siteConfig.hero.secondaryAction.label}
-          </a>
-        </Button>
+        <Magnetic>
+          <Button asChild size="lg" className="rounded-full">
+            <a href={siteConfig.hero.primaryAction.href}>
+              {siteConfig.hero.primaryAction.label}
+            </a>
+          </Button>
+        </Magnetic>
+        <Magnetic>
+          <Button asChild size="lg" variant="outline" className="rounded-full">
+            <a href={siteConfig.hero.secondaryAction.href}>
+              {siteConfig.hero.secondaryAction.label}
+            </a>
+          </Button>
+        </Magnetic>
       </div>
     </section>
   );

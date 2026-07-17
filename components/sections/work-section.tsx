@@ -64,7 +64,7 @@ function ProjectCard({
             className="transition duration-700 group-hover:scale-105"
           />
         </div>
-        <ArrowUpRight className="h-6 w-6 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
+        <ArrowUpRight className="hidden h-6 w-6 transition group-hover:translate-x-1 group-hover:-translate-y-1 md:block" />
       </motion.div>
 
       {/* Expanded content */}

@@ -406,6 +406,14 @@ export const stories = [
   "Where AI belongs in a product roadmap."
 ];
 
+export const notFoundCopy = {
+  code: "404",
+  title: "This page morphed away.",
+  description:
+    "The link is broken, or the page has moved on to another form. Head back and keep exploring.",
+  action: { label: "Back to home", href: "/" }
+};
+
 export const contactForm = {
   eyebrow: "Start a project",
   title: "Ready to build your product?",
