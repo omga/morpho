@@ -3,8 +3,8 @@ export const siteConfig = {
   tagline: "Small team. Serious output.",
   description:
     "Mobile apps and digital products for founders — designed, built, and shipped by a small senior team.",
-  url: "https://morphostudio.dev",
-  email: "hello@morphostudio.dev",
+  url: "https://morphostudio.tech",
+  email: "hello@morphostudio.tech",
   phone: "+1 604 861 2249",
   cta: "Let's Talk",
   address: ["Remote-first studio", "Kyiv / Vancouver", "Building worldwide"],
@@ -302,7 +302,13 @@ export const projects: Project[] = [
     outcome:
       "MindMate shipped in early 2023 — months ahead of the wave of AI companions that followed — and passed 5,000 organic installs on Google Play, where it's still live today. It remains our proof that a small team can take a brand-new technology from zero to shipped product in weeks.",
     services: ["Product design", "Flutter development", "AI integration"],
-    stack: ["Flutter (iOS & Android)", "OpenAI chat + image APIs", "Prompt template system"]
+    stack: ["Flutter (iOS & Android)", "OpenAI chat + image APIs", "Prompt template system"],
+    links: [
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.brainjars.mindmate"
+      }
+    ]
   },
   {
     slug: "opussafe",
