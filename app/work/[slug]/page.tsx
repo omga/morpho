@@ -22,10 +22,19 @@ export function generateMetadata({
 }): Metadata {
   const project = projects.find((p) => p.slug === params.slug);
   if (!project) return {};
+  const title = `${project.title} — ${project.type}`;
   return {
-    title: `${project.title} — ${project.type} | ${siteConfig.name}`,
+    title,
     description: project.summary,
+    alternates: { canonical: `/work/${project.slug}` },
     openGraph: {
+      type: "article",
+      title: `${project.title} — ${project.subtitle}`,
+      description: project.summary,
+      url: `${siteConfig.url}/work/${project.slug}`
+    },
+    twitter: {
+      card: "summary_large_image",
       title: `${project.title} — ${project.subtitle}`,
       description: project.summary
     }

@@ -3,8 +3,8 @@ export const siteConfig = {
   tagline: "Small team. Serious output.",
   description:
     "Mobile apps and digital products for founders — designed, built, and shipped by a small senior team.",
-  url: "https://morphostudio.tech",
-  email: "hello@morphostudio.tech",
+  url: "https://morphostudio.dev",
+  email: "hello@morphostudio.dev",
   phone: "+1 604 861 2249",
   cta: "Let's Talk",
   address: ["Remote-first studio", "Kyiv / Vancouver", "Building worldwide"],
