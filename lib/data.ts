@@ -349,9 +349,9 @@ export const projects: Project[] = [
     stack: ["Kotlin Multiplatform", "ADS-B hardware link", "High-performance map rendering"]
   },
   {
-    slug: "opussafe",
-    title: "OpusSafe",
-    subtitle: "Construction safety, simplified",
+    slug: "sitebeam",
+    title: "Sitebeam",
+    subtitle: "Construction safety, without the binders",
     year: "2026",
     type: "SaaS platform",
     industry: "Construction & compliance",
@@ -373,9 +373,9 @@ export const projects: Project[] = [
     stack: ["Next.js", "React Native", "PostgreSQL", "AWS S3"]
   },
   {
-    slug: "havium",
-    title: "Havium",
-    subtitle: "Property investing, clear as day",
+    slug: "domora",
+    title: "Domora",
+    subtitle: "Property investing, minus the guesswork",
     year: "2025",
     type: "Fintech app",
     industry: "Real estate fintech",
@@ -397,9 +397,9 @@ export const projects: Project[] = [
     stack: ["Next.js", "TypeScript", "PostgreSQL", "Node.js workers"]
   },
   {
-    slug: "mlv",
-    title: "MLV",
-    subtitle: "Global investment, guided with precision",
+    slug: "vantora",
+    title: "Vantora",
+    subtitle: "Global investing, guided end to end",
     year: "2024",
     type: "Investment portal",
     industry: "Wealth management",
@@ -421,9 +421,9 @@ export const projects: Project[] = [
     stack: ["Next.js", "TypeScript", "PostgreSQL", "Node.js"]
   },
   {
-    slug: "unitiq",
-    title: "UnitIQ",
-    subtitle: "Cash flow on every listing",
+    slug: "rentmath",
+    title: "Rentmath",
+    subtitle: "Every listing, run through the numbers",
     year: "2024",
     type: "Real estate tool",
     industry: "Real estate tools",
