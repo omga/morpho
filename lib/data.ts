@@ -51,7 +51,7 @@ export const sectionCopy = {
     eyebrow: "Stories",
     title: "Notes from the floor.",
     description:
-      "Lightweight editorial slots for process, launches, and product thinking."
+      "Notes on teams, launches, and AI — from the floor, not the content calendar."
   },
   testimonials: {
     eyebrow: "Partners",
@@ -539,10 +539,132 @@ export type Testimonial = {
  */
 export const testimonials: Testimonial[] = [];
 
-export const stories = [
-  "Why small senior teams beat noisy delivery rooms.",
-  "Designing app launches around business proof, not vibes.",
-  "Where AI belongs in a product roadmap."
+export type StoryBlock = { h2?: string; p?: string; list?: string[] };
+
+export type Story = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  body: StoryBlock[];
+};
+
+export const storiesCopy = {
+  eyebrow: "Story",
+  backLabel: "All stories",
+  cta: { title: "Building something?", action: "Let's Talk", href: "/#contact" }
+};
+
+export const stories: Story[] = [
+  {
+    slug: "headcount-is-not-momentum",
+    title: "Headcount is not momentum",
+    excerpt:
+      "Big teams feel safe and move slowly. What we learned about speed by watching size get in its own way.",
+    date: "July 2026",
+    body: [
+      {
+        p: "We've worked inside big product organizations — the kind with real budgets, real process, and a room full of smart people for every decision. Good things get built there. Some of the best software we've ever touched came out of exactly those rooms, and we're not going to pretend otherwise."
+      },
+      {
+        p: "But somewhere past a certain size, a strange accounting takes over. Adding people to a project starts to feel like progress in itself. Twelve people sounds twice as serious as six, and twice as serious must surely be twice as fast. Anyone who has actually lived it knows the arithmetic runs the other way."
+      },
+      { h2: "Where the time actually goes" },
+      {
+        p: "It goes to synchronization. Every person on a project carries a small tax on everyone else: another calendar to find room in, another handoff to document, another person who quite reasonably asks to be looped in before something becomes final. None of this is malicious, and at scale almost none of it is optional. Big organizations aren't slow because the people are slow — they're slow because coordination at size genuinely requires machinery, and machinery has mass."
+      },
+      {
+        p: "A four-person team pays almost none of that tax. Decisions happen inside the same conversation where the problem was noticed. The designer was there when the developer explained the constraint, so nobody has to write the constraint up, schedule a review of it, and defend it three weeks later to someone meeting it for the first time."
+      },
+      {
+        list: [
+          "No status meetings about other status meetings.",
+          "No handoff documents for people sitting in the same call.",
+          "No waiting two sprints for a decision that takes one honest hour.",
+          "No translating between what sales promised and what the ticket says."
+        ]
+      },
+      { h2: "Small only works when it's senior" },
+      {
+        p: "Here's the catch, and it's real: a small junior team is just as slow as a big one, for different reasons. Small teams have no slack for learning on the job. Every person has to be someone whose judgment you'd trust unsupervised, because unsupervised is the whole arrangement."
+      },
+      {
+        p: "Senior speed isn't typing faster. It's the shorter distance between seeing a problem and knowing which of the five plausible solutions will still look right in six months. The biggest schedule win available in software is the mistake you don't make, and that win compounds quietly for the entire life of the product."
+      },
+      { h2: "What this buys you" },
+      {
+        p: "The same people from the first call to the release build. Decisions in hours, not sprints. A team small enough that nobody can hide, senior enough that nobody needs to. That's not a philosophy — it's just what's left when you delete everything that only exists because a team got too big to talk to itself."
+      }
+    ]
+  },
+  {
+    slug: "launch-to-learn",
+    title: "Launch to learn, not to impress",
+    excerpt:
+      "The first release isn't your product's big moment. It's the first honest answer the market gives you.",
+    date: "June 2026",
+    body: [
+      {
+        p: "There's a way of launching an app that looks a lot like a wedding: months of preparation, one big day, everyone smiling, and an unspoken agreement not to ask hard questions. The morning after, the metrics dashboard is quiet in a way nobody planned for, and the team quietly starts calling version 1.1 'the real launch.'"
+      },
+      {
+        p: "The launches that go somewhere treat day one differently — not as a verdict on the team, but as a question put to the market. You don't launch to be told you're great. You launch to find out what's true."
+      },
+      { h2: "Decide what needs to be true" },
+      {
+        p: "Every product rests on a short stack of assumptions. People will grant this permission. People will pay before that feature. People will come back on day seven without being bribed. Most of the stack can be wrong and you'll survive — but one or two of those assumptions are load-bearing. Name them before you ship, out loud, in writing. The first release exists to test the load-bearing ones and almost nothing else."
+      },
+      { h2: "Build the smallest thing that can be wrong" },
+      {
+        p: "MVPs have a bad reputation because most of them are just small, and small isn't the point. Falsifiable is the point. A first release should be polished exactly where trust is earned — onboarding, the first five minutes, the moment money changes hands — and unapologetically plain everywhere your test doesn't reach. Nobody churns because settings looked basic. They churn because minute one didn't convince them."
+      },
+      { h2: "Pick your numbers before, not after" },
+      {
+        p: "Decide what 'working' means before launch day: two or three numbers, written down, with honest thresholds. Retention over downloads, almost always — downloads measure your marketing, retention measures your product. If you define success after the data comes in, everything will look like success, and you'll learn nothing at the exact moment learning is cheapest."
+      },
+      {
+        p: "A quiet launch that teaches you something real beats a loud one that flatters you. The market's first answer is rarely yes — but it's almost always useful, and useful is what version two is made of."
+      }
+    ]
+  },
+  {
+    slug: "most-apps-dont-need-a-chatbot",
+    title: "Most apps don't need a chatbot",
+    excerpt:
+      "AI belongs where it removes work, not where it performs intelligence. A short field guide to telling the difference.",
+    date: "May 2026",
+    body: [
+      {
+        p: "Every second brief we see now has the same line in it: 'and AI features.' Fair enough — the pressure is real, investors ask about it, users half-expect it. But 'add AI' is not a feature request. It's a mood. And the default translation of that mood — a chat window bolted to the corner of an app that already had a job to do — is usually the wrong one."
+      },
+      {
+        p: "We've shipped conversational AI where conversation was the whole point of the product. That's the exception. When chat is the product, chat is right. When chat is an accessory, it's a burden wearing a glow-up."
+      },
+      { h2: "The test: does it remove steps?" },
+      {
+        p: "Good AI integration is mostly invisible. It turns a photo into a filled-in form. It drafts the message the user was about to write anyway. It files, sorts, and flags so a human looks at ten things instead of two hundred. In every case the user does less than before. A bolted-on chatbot fails this test: now the user has to compose a prompt, read an essay back, and judge whether to trust it. That's more work, not less — outsourced to your busiest resource."
+      },
+      { h2: "Where it earns its place" },
+      {
+        list: [
+          "Summarizing what happened while the user was away, instead of a feed they'll never scroll through.",
+          "Turning messy input — photos, voice notes, pasted text — into structured data without a form.",
+          "Writing the first draft of anything people write repeatedly and reluctantly.",
+          "Ranking and flagging, so attention lands where it matters."
+        ]
+      },
+      {
+        p: "Notice that none of these require the user to know AI is involved. The best compliment an AI feature can get is nobody mentioning it — things just take fewer steps than they used to."
+      },
+      { h2: "The cost of pretending" },
+      {
+        p: "Every AI feature is a promise with a meter running: latency the user feels, tokens someone pays for, and a new surface where the product can be confidently wrong. That's a fine price for removed work. It's a terrible price for a demo. One AI feature that genuinely saves people time will outlast five that impressed a boardroom."
+      },
+      {
+        p: "So the roadmap question isn't 'where can we put AI.' It's 'what work can we make disappear.' Answer that, and the technology chooses itself."
+      }
+    ]
+  }
 ];
 
 export const notFoundCopy = {
