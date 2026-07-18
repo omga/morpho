@@ -311,6 +311,44 @@ export const projects: Project[] = [
     ]
   },
   {
+    slug: "apisaero",
+    title: "ApisAero",
+    subtitle: "Cockpit-grade navigation for civil aviation",
+    year: "2025–2026",
+    type: "Aviation navigation app",
+    industry: "Civil aviation",
+    kind: "team",
+    attribution: {
+      context:
+        "Shipped production aviation software — sole mobile engineer on the product.",
+      role: "Solo mobile developer — architecture, mapping performance, sensors, and ADS-B connectivity, in Kotlin Multiplatform"
+    },
+    palette: { hue: 218, hue2: 48 },
+    images: {
+      cover: "/work/apisaero/cover.png",
+      hero: "/work/apisaero/cover.png",
+      gallery: [
+        "/work/apisaero/apisaero-1.jpg",
+        "/work/apisaero/apisaero-2.png",
+        "/work/apisaero/apisaero-3.png"
+      ]
+    },
+    summary:
+      "A navigation app for civil aviation — live flight instruments, route planning, thousands of map objects, and real-time air traffic via ADS-B — with the entire mobile build owned by a single engineer in Kotlin Multiplatform.",
+    challenge:
+      "A pilot's device has no patience for jank: instruments must read true at speed, and a map carrying thousands of geozones, markers, and live traffic has to stay smooth through hours-long flights with the app working hard in the background. Aviation software earns trust by never stuttering.",
+    approach: [
+      "Live flight instruments — speed, altitude, heading, and route progress — rendered in real time from onboard sensors.",
+      "Route planning built for real flights: compose, save, and load routes in seconds.",
+      "A map engineered for scale: thousands of geozones and markers kept fluid through lazy loading, background processing, and tight memory management.",
+      "Live air traffic via direct connection to ADS-B receivers, with weather, wind, and runway data layered onto the map."
+    ],
+    outcome:
+      "Shipped as a production app with one engineer owning the entire mobile build — a single Kotlin Multiplatform codebase spanning instruments, high-performance mapping, and hardware connectivity. Deep, performance-critical mobile work doesn't need a big team; it needs the right one.",
+    services: ["Mobile development", "Real-time systems", "Hardware integration"],
+    stack: ["Kotlin Multiplatform", "ADS-B hardware link", "High-performance map rendering"]
+  },
+  {
     slug: "opussafe",
     title: "OpusSafe",
     subtitle: "Construction safety, simplified",
@@ -357,30 +395,6 @@ export const projects: Project[] = [
       "The concept demonstrates a full decision-support loop for property investing — from discovery to scored deal to tracked asset — with the data model designed for real market-data integrations.",
     services: ["UX/UI design", "Web development", "AI integration"],
     stack: ["Next.js", "TypeScript", "PostgreSQL", "Node.js workers"]
-  },
-  {
-    slug: "pulsia",
-    title: "Pulsia",
-    subtitle: "Health monitoring application",
-    year: "2024",
-    type: "Wearable companion",
-    industry: "Digital health",
-    kind: "concept",
-    palette: { hue: 355, hue2: 25 },
-    summary:
-      "A wearable health companion that tracks vitals, detects anomalies, and turns raw sensor data into insights worth acting on.",
-    challenge:
-      "Wearables generate rivers of vitals data that most owners never act on. The hard problem isn't collection — it's separating a meaningful anomaly from noise, and saying it in language that informs without alarming.",
-    approach: [
-      "Baseline learning per user, so 'unusual' is defined by your body rather than population averages.",
-      "Anomaly cards written in plain language with explicit next steps, reviewed against a do-no-harm copy standard.",
-      "A watch-first, glanceable interface where the phone app is the depth layer, not the front door.",
-      "Clinician-ready exports, because the moment that matters is the one where a doctor asks 'can I see the data?'"
-    ],
-    outcome:
-      "The concept works out the full signal chain from raw sensor stream to humane, actionable insight — the exact layer where most wearable companions lose their users.",
-    services: ["UX/UI design", "Mobile development", "AI integration"],
-    stack: ["Swift", "HealthKit", "Kotlin", "Node.js"]
   },
   {
     slug: "mlv",
