@@ -35,7 +35,7 @@ export const sectionCopy = {
     eyebrow: "Our work",
     title: "Selected Work",
     description:
-      "Shipped products from our team's track record, alongside concept explorations that show how we think. Client case studies take more of these slots as they launch."
+      "Shipped products from our team's track record — every one of them real. Client case studies join them as they launch."
   },
   about: {
     eyebrow: "About",
@@ -347,102 +347,6 @@ export const projects: Project[] = [
       "Shipped as a production app with one engineer owning the entire mobile build — a single Kotlin Multiplatform codebase spanning instruments, high-performance mapping, and hardware connectivity. Deep, performance-critical mobile work doesn't need a big team; it needs the right one.",
     services: ["Mobile development", "Real-time systems", "Hardware integration"],
     stack: ["Kotlin Multiplatform", "ADS-B hardware link", "High-performance map rendering"]
-  },
-  {
-    slug: "sitebeam",
-    title: "Sitebeam",
-    subtitle: "Construction safety, without the binders",
-    year: "2026",
-    type: "SaaS platform",
-    industry: "Construction & compliance",
-    kind: "concept",
-    palette: { hue: 36, hue2: 14 },
-    summary:
-      "Digital safety management for construction teams — automated reporting, incident tracking, and compliance documentation in one platform.",
-    challenge:
-      "Site safety still runs on paper: toolbox talks in binders, incident reports filed days late, and compliance audits that take a week of scrambling. Field workers wear gloves, work in glare, and have no patience for enterprise software.",
-    approach: [
-      "Offline-first forms that sync when signal returns — a hard requirement on real sites, not a nice-to-have.",
-      "One-tap incident capture with photos and voice notes, designed for gloved hands and bright sunlight.",
-      "Compliance documentation assembled automatically from daily activity, so an audit becomes an export instead of a crisis.",
-      "A manager dashboard that surfaces leading indicators — missed checks, overdue actions — before they become incidents."
-    ],
-    outcome:
-      "The concept demonstrates how consumer-grade interaction design changes adoption in an industry that hates software — the field flows were pressure-tested against real site constraints like connectivity, gloves, and time pressure.",
-    services: ["UX/UI design", "Web development", "Mobile development"],
-    stack: ["Next.js", "React Native", "PostgreSQL", "AWS S3"]
-  },
-  {
-    slug: "domora",
-    title: "Domora",
-    subtitle: "Property investing, minus the guesswork",
-    year: "2025",
-    type: "Fintech app",
-    industry: "Real estate fintech",
-    kind: "concept",
-    palette: { hue: 190, hue2: 220 },
-    summary:
-      "A property investment platform with real-time market analytics, portfolio tracking, and automated due-diligence reports for informed decisions.",
-    challenge:
-      "Retail property investors drown in listings but starve for signal. The data exists — comps, yields, market velocity — but it's scattered across tabs and spreadsheets, and analysis paralysis wins more often than any deal does.",
-    approach: [
-      "A deal scorecard that condenses due diligence into one screen a non-professional can act on with confidence.",
-      "Portfolio views built around cash flow and exposure rather than vanity valuations.",
-      "Automated due-diligence reports assembled from market data, saving the weekend currently spent copy-pasting into spreadsheets.",
-      "Alerting tuned to investor criteria, so the platform works while the user doesn't."
-    ],
-    outcome:
-      "The concept demonstrates a full decision-support loop for property investing — from discovery to scored deal to tracked asset — with the data model designed for real market-data integrations.",
-    services: ["UX/UI design", "Web development", "AI integration"],
-    stack: ["Next.js", "TypeScript", "PostgreSQL", "Node.js workers"]
-  },
-  {
-    slug: "vantora",
-    title: "Vantora",
-    subtitle: "Global investing, guided end to end",
-    year: "2024",
-    type: "Investment portal",
-    industry: "Wealth management",
-    kind: "concept",
-    palette: { hue: 230, hue2: 195 },
-    summary:
-      "A global investment portal offering curated opportunities across markets — risk profiling, document flows, and portfolio diversification tools.",
-    challenge:
-      "Cross-border investors juggle jurisdictions, risk tiers, and mountains of documents across email threads and PDFs. The experience layer of private investing lags a decade behind the assets it moves.",
-    approach: [
-      "Curated deal rooms that present each opportunity with consistent structure — thesis, terms, risks, documents — instead of a folder of PDFs.",
-      "Risk profiling that gates discovery, so investors see opportunities matched to their mandate rather than a firehose.",
-      "A document vault with e-sign flows designed around how deals actually close, including the multi-party waiting states.",
-      "A relationship-manager console, keeping the human advisory layer inside the product instead of leaking into email."
-    ],
-    outcome:
-      "The concept brings consumer-grade clarity to private investment flows while respecting the compliance structure the domain demands — a template for the unglamorous-but-valuable end of fintech.",
-    services: ["Product strategy", "UX/UI design", "Web development"],
-    stack: ["Next.js", "TypeScript", "PostgreSQL", "Node.js"]
-  },
-  {
-    slug: "rentmath",
-    title: "Rentmath",
-    subtitle: "Every listing, run through the numbers",
-    year: "2024",
-    type: "Real estate tool",
-    industry: "Real estate tools",
-    kind: "concept",
-    palette: { hue: 165, hue2: 135 },
-    summary:
-      "A real estate investment calculator that analyzes cash flow, ROI, and market trends — data-backed decisions on every property listing.",
-    challenge:
-      "Every serious property investor maintains a spreadsheet, and every spreadsheet is slightly wrong. Evaluating a listing means twenty minutes of manual entry per property — friction that caps how many deals anyone can seriously consider.",
-    approach: [
-      "Paste-a-listing parsing that pre-fills the model in seconds, collapsing the per-property evaluation cost.",
-      "An opinionated cash-flow model with every assumption exposed and adjustable — trust through transparency, not black boxes.",
-      "Scenario sliders for rate, rent, and vacancy that make sensitivity analysis a gesture instead of a formula.",
-      "Saved comps and shareable analyses, because investment decisions are made in conversations."
-    ],
-    outcome:
-      "The concept turns a spreadsheet ritual into a sub-minute workflow, and shows how a sharply-scoped single-purpose tool can out-compete platforms by respecting one job completely.",
-    services: ["UX/UI design", "Web development"],
-    stack: ["Next.js", "TypeScript", "Supabase"]
   }
 ];
 
