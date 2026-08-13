@@ -4,13 +4,12 @@ export const siteConfig = {
   description:
     "Mobile apps and digital products for founders — designed, built, and shipped by a small senior team.",
   url: "https://morphostudio.dev",
-  email: "hello@morphostudio.dev",
-  phone: "+1 604 861 2249",
+  email: "andrew.hatrus@gmail.com",
   cta: "Let's Talk",
   address: ["Remote-first studio", "Kyiv / Vancouver", "Building worldwide"],
   nav: [
-    { label: "ABOUT", href: "/#about" },
     { label: "PORTFOLIO", href: "/#work" },
+    { label: "ABOUT", href: "/#about" },
     { label: "SERVICES", href: "/#services" },
     { label: "STORIES", href: "/#stories" },
     { label: "CONTACT", href: "/#contact" }
@@ -382,7 +381,7 @@ export const projects: Project[] = [
       cover: "/work/apisaero/cover.png",
       hero: "/work/apisaero/cover-2.jpg",
       gallery: [
-        "/work/apisaero/cover-2.png",
+        "/work/apisaero/apisaero-4.jpg",
         "/work/apisaero/apisaero-1.jpg",
         "/work/apisaero/apisaero-2.png",
         "/work/apisaero/apisaero-3.png"
@@ -512,7 +511,7 @@ export const services = [
 export const team = [
   {
     name: "Andrew",
-    role: "Founder",
+    role: "Lead developer",
     bio: "Turns product ambiguity into clear decisions, sharp scopes, and work that can actually ship."
   },
   {
@@ -522,8 +521,8 @@ export const team = [
   },
   {
     name: "Vlad",
-    role: "Mobile developer",
-    bio: "Makes mobile experiences feel quick, stable, and quietly polished in the hand."
+    role: "Full-stack developer",
+    bio: "Turns complex ideas into smooth, reliable products that just work."
   },
   {
     name: "Anne",

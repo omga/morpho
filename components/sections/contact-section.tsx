@@ -123,12 +123,7 @@ export function ContactSection() {
             <a href={`mailto:${siteConfig.email}`} className="mt-4 text-foreground">
               {siteConfig.email}
             </a>
-            <a
-              href={`tel:${siteConfig.phone.replaceAll(" ", "")}`}
-              className="text-foreground"
-            >
-              {siteConfig.phone}
-            </a>
+           
           </div>
         </Reveal>
 
