@@ -398,6 +398,61 @@ export const projects: Project[] = [
         href: "https://play.google.com/store/apps/details?id=com.zuup.roam"
       }
     ]
+  },
+  {
+    slug: "teleconsole",
+    title: "TeleConsole",
+    subtitle: "Your office phone system, off the desk",
+    year: "",
+    type: "Business communications app",
+    industry: "Telecom / VoIP",
+    kind: "team",
+    attribution: {
+      context:
+        "Production work at Telebroad on the TeleConsole mobile apps — the pocket arm of a full office phone platform.",
+      role: "Mobile developer — building app features over REST, VoIP, and WebSocket APIs"
+    },
+    palette: { hue: 230, hue2: 180 },
+    images: {
+      cover: "/work/teleconsole/cover.png",
+      hero: "/work/teleconsole/cover.png",
+      stack: [
+        { src: "/work/teleconsole/teleconsole-1.png", width: 1100, height: 630 }
+      ],
+      gallery: [
+        "/work/teleconsole/teleconsole-2.png",
+        "/work/teleconsole/teleconsole-3.png",
+        "/work/teleconsole/teleconsole-4.png",
+        "/work/teleconsole/teleconsole-5.png",
+        "/work/teleconsole/teleconsole-6.webp",
+        "/work/teleconsole/teleconsole-7.webp"
+      ],
+      galleryAspect: "portrait"
+    },
+    summary:
+      "The mobile arm of Telebroad's office phone system — VoIP calls, SMS, fax, and voicemail with full desk-phone controls, anywhere the workday goes.",
+    challenge:
+      "A phone system is the one app that isn't allowed to fail. Calls arrive over VoIP, messages ride WebSockets, and all of it has to stay reachable around the clock without draining the battery or the data plan. The desk-phone features businesses actually run on — transfer, conferencing, recording, forwarding — had to survive the move to a pocket without losing their reliability.",
+    approach: [
+      "Full call control on mobile: hold, transfer, conferencing, recording, Do Not Disturb, forwarding, and selectable caller ID — your number or the company's, or hidden entirely.",
+      "More than calls: SMS and MMS, sending and receiving faxes, and support for multiple voicemail, fax, and SMS numbers in one place.",
+      "Call quality as a feature — switch between the mobile carrier and VoIP on the fly, so the best available line wins.",
+      "The engineering underneath: REST, VoIP, and WebSocket integrations tuned for mobile realities — battery, data, and connections that hold. Cloud contacts sync across devices, with company-shared directories."
+    ],
+    outcome:
+      "TeleConsole ships on iOS and Android as the daily communication tool for businesses on Telebroad's platform. Real-time systems that people answer calls on are reliability engineering where it counts — and that discipline carries into everything we build.",
+    services: ["Mobile development", "Real-time systems", "API integration"],
+    stack: ["iOS & Android", "VoIP", "WebSockets", "REST"],
+    links: [
+      {
+        label: "App Store",
+        href: "https://apps.apple.com/us/app/teleconsole/id1301393519"
+      },
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.telebroad.teleconsole"
+      }
+    ]
   }
 ];
 
