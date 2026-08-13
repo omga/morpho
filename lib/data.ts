@@ -90,6 +90,10 @@ export type Project = {
   images?: {
     cover?: string;
     hero?: string;
+    /** Replaces the single hero with a side-by-side image row on the case page. */
+    heroGroup?: string[];
+    /** Explicit visual for the work-row expanded panel. */
+    expanded?: string;
     gallery?: string[];
     /** Cell shape for the gallery grid. Defaults to square. */
     galleryAspect?: "square" | "portrait";
@@ -266,6 +270,56 @@ export const projects: Project[] = [
     ]
   },
   {
+    slug: "zuup-roam",
+    title: "zuup Roam",
+    subtitle: "EV charging for Australia, in one app",
+    year: "2024",
+    type: "eMobility app",
+    industry: "EV charging / eMobility",
+    kind: "client",
+    badge: "Shipped product",
+    attribution: {
+      context:
+        "Client product work for zuup — an Australian eMobility company built around the driver experience, not the charging hardware.",
+      role: "Mobile development across onboarding, station discovery, charging sessions, and payments"
+    },
+    palette: { hue: 152, hue2: 95 },
+    images: {
+      cover: "/work/zuup/cover.avif",
+      hero: "/work/zuup/cover.avif",
+      stack: [
+        { src: "/work/zuup/zuup-1.avif", width: 1920, height: 626 },
+        { src: "/work/zuup/zuup-2.avif", width: 1920, height: 730 }
+      ],
+      gallery: ["/work/zuup/zup-3.webp", "/work/zuup/zup-4.webp"],
+      galleryAspect: "portrait"
+    },
+    summary:
+      "One app for Australian EV drivers to find, charge, and pay across multiple public charging networks — 110+ locations, 200+ stations, and no per-provider apps in the glovebox.",
+    challenge:
+      "Australia's public charging is run by many operators, and each one expects its own app, account, and payment method. For drivers, range anxiety is often really app anxiety. zuup's answer was to build the whole business around the driver experience — which meant one app had to handle roaming across networks: live availability, honest pricing, and payments that never interrupt a charge.",
+    approach: [
+      "Onboarding cut to the essentials — email, phone, name — with everything else filled in during normal use. Adding a car takes a license plate; the app pulls the rest from the Australian vehicle registry. Three profile types cover personal drivers, business users, and fleets.",
+      "Station discovery built for trip planning: Google Maps search along a route, real-time availability and pricing, a Price Graph of how rates move through the day, Popular Hours drawn from actual session data, plus driver ratings and nearby facilities.",
+      "Charging sessions a driver can trust from their pocket — limits by time or battery percentage, real-time push updates, and an iOS Live Activity that keeps the session on the lock screen without opening the app.",
+      "Payments that disappear: Stripe confirmation moved to the start of the session, so billing completes automatically when charging ends. Invoices arrive by email, and subscriptions give frequent drivers session discounts."
+    ],
+    outcome:
+      "zuup Roam is live across Australia — 110+ charging locations, 200+ stations, and growing as new charge point operators integrate into the network. Charging roaming is infrastructure UX: the product works best when drivers stop noticing where one operator ends and the next begins.",
+    services: ["Mobile development", "UX flows", "Payments integration"],
+    stack: ["iOS & Android", "Stripe billing", "Google Maps", "Live Activities"],
+    links: [
+      {
+        label: "App Store",
+        href: "https://apps.apple.com/au/app/zuup-roam/id6751229669"
+      },
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.zuup.roam"
+      }
+    ]
+  },
+  {
     slug: "mindmate",
     title: "MindMate",
     subtitle: "An AI companion, shipped before the gold rush",
@@ -326,7 +380,7 @@ export const projects: Project[] = [
     palette: { hue: 218, hue2: 48 },
     images: {
       cover: "/work/apisaero/cover.png",
-      hero: "/work/apisaero/cover-2.png",
+      hero: "/work/apisaero/cover-2.jpg",
       gallery: [
         "/work/apisaero/cover-2.png",
         "/work/apisaero/apisaero-1.jpg",
@@ -350,60 +404,10 @@ export const projects: Project[] = [
     stack: ["Kotlin Multiplatform", "ADS-B hardware link", "High-performance map rendering"]
   },
   {
-    slug: "zuup-roam",
-    title: "zuup Roam",
-    subtitle: "EV charging for Australia, in one app",
-    year: "2024",
-    type: "eMobility app",
-    industry: "EV charging / eMobility",
-    kind: "client",
-    badge: "Shipped product",
-    attribution: {
-      context:
-        "Client product work for zuup — an Australian eMobility company built around the driver experience, not the charging hardware.",
-      role: "Mobile development across onboarding, station discovery, charging sessions, and payments"
-    },
-    palette: { hue: 152, hue2: 95 },
-    images: {
-      cover: "/work/zuup/cover.avif",
-      hero: "/work/zuup/cover.avif",
-      stack: [
-        { src: "/work/zuup/zuup-1.avif", width: 1920, height: 626 },
-        { src: "/work/zuup/zuup-2.avif", width: 1920, height: 730 }
-      ],
-      gallery: ["/work/zuup/zup-3.webp", "/work/zuup/zup-4.webp"],
-      galleryAspect: "portrait"
-    },
-    summary:
-      "One app for Australian EV drivers to find, charge, and pay across multiple public charging networks — 110+ locations, 200+ stations, and no per-provider apps in the glovebox.",
-    challenge:
-      "Australia's public charging is run by many operators, and each one expects its own app, account, and payment method. For drivers, range anxiety is often really app anxiety. zuup's answer was to build the whole business around the driver experience — which meant one app had to handle roaming across networks: live availability, honest pricing, and payments that never interrupt a charge.",
-    approach: [
-      "Onboarding cut to the essentials — email, phone, name — with everything else filled in during normal use. Adding a car takes a license plate; the app pulls the rest from the Australian vehicle registry. Three profile types cover personal drivers, business users, and fleets.",
-      "Station discovery built for trip planning: Google Maps search along a route, real-time availability and pricing, a Price Graph of how rates move through the day, Popular Hours drawn from actual session data, plus driver ratings and nearby facilities.",
-      "Charging sessions a driver can trust from their pocket — limits by time or battery percentage, real-time push updates, and an iOS Live Activity that keeps the session on the lock screen without opening the app.",
-      "Payments that disappear: Stripe confirmation moved to the start of the session, so billing completes automatically when charging ends. Invoices arrive by email, and subscriptions give frequent drivers session discounts."
-    ],
-    outcome:
-      "zuup Roam is live across Australia — 110+ charging locations, 200+ stations, and growing as new charge point operators integrate into the network. Charging roaming is infrastructure UX: the product works best when drivers stop noticing where one operator ends and the next begins.",
-    services: ["Mobile development", "UX flows", "Payments integration"],
-    stack: ["iOS & Android", "Stripe billing", "Google Maps", "Live Activities"],
-    links: [
-      {
-        label: "App Store",
-        href: "https://apps.apple.com/au/app/zuup-roam/id6751229669"
-      },
-      {
-        label: "Google Play",
-        href: "https://play.google.com/store/apps/details?id=com.zuup.roam"
-      }
-    ]
-  },
-  {
     slug: "teleconsole",
     title: "TeleConsole",
     subtitle: "Your office phone system, off the desk",
-    year: "",
+    year: "2020",
     type: "Business communications app",
     industry: "Telecom / VoIP",
     kind: "team",
@@ -415,14 +419,13 @@ export const projects: Project[] = [
     palette: { hue: 230, hue2: 180 },
     images: {
       cover: "/work/teleconsole/cover.png",
-      hero: "/work/teleconsole/cover.png",
-      stack: [
-        { src: "/work/teleconsole/teleconsole-1.png", width: 1100, height: 630 }
-      ],
-      gallery: [
+      expanded: "/work/teleconsole/cover-expand.png",
+      heroGroup: [
         "/work/teleconsole/teleconsole-2.png",
         "/work/teleconsole/teleconsole-3.png",
-        "/work/teleconsole/teleconsole-4.png",
+        "/work/teleconsole/teleconsole-4.png"
+      ],
+      gallery: [
         "/work/teleconsole/teleconsole-5.png",
         "/work/teleconsole/teleconsole-6.webp",
         "/work/teleconsole/teleconsole-7.webp"

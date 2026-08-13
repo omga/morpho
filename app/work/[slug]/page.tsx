@@ -164,7 +164,25 @@ export default function CaseStudyPage({
           </Reveal>
 
           <Reveal delay={0.15} className="mt-12">
-            {project.images?.hero ? (
+            {project.images?.heroGroup && project.images.heroGroup.length > 0 ? (
+              <div className="grid grid-cols-3 gap-4">
+                {project.images.heroGroup.map((src) => (
+                  <div
+                    key={src}
+                    className="relative aspect-[2/3] overflow-hidden rounded-md border border-foreground/20"
+                  >
+                    <Image
+                      src={src}
+                      alt={`${project.title} — product imagery`}
+                      fill
+                      priority
+                      sizes="(min-width: 1440px) 30rem, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            ) : project.images?.hero ? (
               <div className="relative aspect-video overflow-hidden rounded-md border border-foreground/20">
                 <Image
                   src={project.images.hero}

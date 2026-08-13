@@ -115,10 +115,12 @@ function ProjectCard({
                 {project.images?.gallery?.[0] || project.images?.cover ? (
                   <Image
                     src={
-                      // portrait screenshots crop badly at 8:5 — prefer the cover
-                      (project.images.galleryAspect === "portrait"
-                        ? project.images.cover ?? project.images.gallery?.[0]
-                        : project.images.gallery?.[0] ?? project.images.cover)!
+                      // explicit override first; portrait screenshots crop
+                      // badly at 8:5, so otherwise prefer the cover for those
+                      (project.images.expanded ??
+                        (project.images.galleryAspect === "portrait"
+                          ? project.images.cover ?? project.images.gallery?.[0]
+                          : project.images.gallery?.[0] ?? project.images.cover))!
                     }
                     alt={`${project.title} — product imagery`}
                     fill
