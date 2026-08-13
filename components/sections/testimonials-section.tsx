@@ -20,6 +20,9 @@ export function TestimonialsSection() {
           <h2 className="mt-3 font-display text-5xl font-semibold sm:text-7xl">
             {sectionCopy.testimonials.title}
           </h2>
+          <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">
+            {sectionCopy.testimonials.note}
+          </p>
         </Reveal>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -37,7 +40,9 @@ export function TestimonialsSection() {
               </p>
               <div>
                 <p className="font-display text-xl">{testimonial.name}</p>
-                <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                {testimonial.role && (
+                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                )}
               </div>
             </MotionDiv>
           ))}

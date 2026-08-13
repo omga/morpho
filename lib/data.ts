@@ -53,8 +53,9 @@ export const sectionCopy = {
       "Notes on teams, launches, and AI — from the floor, not the content calendar."
   },
   testimonials: {
-    eyebrow: "Partners",
-    title: "What it's like to work with us."
+    eyebrow: "Client reviews",
+    title: "What it's like to work with us.",
+    note: "Verified client reviews from Upwork, for work led by Andrew, our lead developer."
   },
   footer: {
     description:
@@ -541,15 +542,30 @@ export const studioFacts = [
 export type Testimonial = {
   quote: string;
   name: string;
-  role: string;
+  /** Context as the review platform shows it — omitted when there is none. */
+  role?: string;
 };
 
-/**
- * Ships empty on purpose — the section renders only when real quotes exist.
- * Add entries as clients provide them:
- * { quote: "…", name: "Jane Doe", role: "CEO, Acme" }
- */
-export const testimonials: Testimonial[] = [];
+/** Real Upwork reviews, quoted as written. Never edit a quote's wording. */
+export const testimonials: Testimonial[] = [
+  {
+    quote:
+      "Very Good in Mobile development, he knows what he's doing, this is my second project with Andrew.",
+    name: "Khurram",
+    role: "Repeat client"
+  },
+  {
+    quote:
+      "He is just an excellent programmer with outstanding work ethics and communication. I definitely recommend!",
+    name: "Lukasz",
+    role: "Co-creator of a deep learning service for turning photos into artworks"
+  },
+  {
+    quote:
+      "Awesome developer -- got the job done as promised. Easy to work with and good communicator.",
+    name: "Richard"
+  }
+];
 
 export type StoryBlock = { h2?: string; p?: string; list?: string[] };
 
