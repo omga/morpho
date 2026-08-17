@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "Mobile apps and digital products for founders — designed, built, and shipped by a small senior team.",
   url: "https://morphostudio.dev",
-  email: "andrew.hatrus@gmail.com",
+  email: "hello@morphostudio.dev",
   cta: "Let's Talk",
   address: ["Remote-first studio", "Kyiv / Vancouver", "Building worldwide"],
   nav: [

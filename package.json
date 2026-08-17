@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "legal:check": "grep -rn \"\\[TODO\" lib/legal && echo \"^ placeholders remain — do not publish\" && exit 1 || echo \"legal: no placeholders\""
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.0",
