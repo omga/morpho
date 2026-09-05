@@ -22,7 +22,7 @@ export function generateMetadata({
   const { app, doc } = found;
   return {
     title: `${app.name} — ${doc.title}`,
-    description: `${doc.title} for ${app.name}, published by ${app.publisher}.`,
+    description: `${doc.title} for ${app.name} — ${app.description} Published by ${app.publisher}.`,
     alternates: { canonical: `/legal/${app.slug}/${doc.kind}` }
   };
 }

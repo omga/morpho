@@ -35,11 +35,11 @@ export const legalCopy = {
   indexTitle: "App policies",
   indexIntro:
     "Privacy policies and terms of service for the apps we publish.",
+  /** Only rendered for docs with `draft: true`. Kept for future apps. */
   draftWarning:
     "DRAFT — this document is not final and must not be submitted to an app store.",
   updatedLabel: "Last updated",
-  contactLabel: "Questions about this document?",
-  docLabels: { privacy: "Privacy Policy", terms: "Terms of Service" }
+  contactLabel: "Questions about this document?"
 } as const;
 
 export function findLegalDoc(appSlug: string, docKind: string) {
