@@ -11,7 +11,7 @@ export const sanctum: LegalApp = {
     {
       kind: "privacy",
       title: "Privacy Policy",
-      updated: "5 September 2026",
+      updated: "23 September 2026",
       draft: false,
       blocks: [
         {
@@ -112,6 +112,20 @@ export const sanctum: LegalApp = {
           p: "One thing worth saying plainly: the protections above cover the information Sanctum holds about you. They cannot cover something you type yourself. If you write a surname, an address or a phone number into the message box, it is sent as part of your question. Please do not."
         },
 
+        { h2: "The palm reading" },
+        {
+          p: "Sanctum can read your palm. You hold your hand up to the camera, the app finds the lines and shape of your palm, and it turns what it finds into a reading. Like every other reading in Sanctum, it is entertainment."
+        },
+        {
+          p: "This is the only feature that uses the camera, and the only reason Sanctum asks for camera permission. It asks when you open the palm reader and not before. If you decline, the palm reader is the only thing that stops working."
+        },
+        {
+          p: "Nothing from the scan leaves your device. The picture is analysed on your phone, by a model bundled inside the app, and there is no server involved at any point — there is no address the app could send a picture to. The picture is not saved either: it is not written into Sanctum’s storage, it is not added to your photo library, and neither the image nor anything measured from it appears in analytics or in a diagnostic report. Close the reader and nothing of it remains, on your phone or anywhere else."
+        },
+        {
+          p: "One point we would rather be precise about than reassuring about. Measuring the shape of a hand is, in some places, capable of being treated as biometric information — even when it happens on your own phone and stays there. Sanctum does not use it to recognise you and could not: there is no account for it to attach to, nothing is kept once you leave the screen, and no record of it ever reaches us. We would rather describe what happens than rely on a label."
+        },
+
         { h2: "What we never collect" },
         {
           p: "Sanctum has no account system, so there is no email address, no username and no password. Beyond that, the app does not request or receive any of the following, and the permissions to do so are not present in the app at all:"
@@ -120,10 +134,10 @@ export const sanctum: LegalApp = {
           list: [
             "Location, of any precision",
             "Contacts, calendar or call history",
-            "Camera, photo library or microphone",
+            "Your photo library, or your microphone",
             "Advertising identifiers, and any form of cross-app or cross-site tracking",
             "Session recordings or screen recordings",
-            "Health, fitness or biometric data"
+            "Health or fitness data"
           ]
         },
         {
