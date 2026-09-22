@@ -120,7 +120,10 @@ export const sanctum: LegalApp = {
           p: "This is the only feature that uses the camera, and the only reason Sanctum asks for camera permission. It asks when you open the palm reader and not before. If you decline, the palm reader is the only thing that stops working."
         },
         {
-          p: "Nothing from the scan leaves your device. The picture is analysed on your phone, by a model bundled inside the app, and there is no server involved at any point — there is no address the app could send a picture to. The picture is not saved either: it is not written into Sanctum’s storage, it is not added to your photo library, and neither the image nor anything measured from it appears in analytics or in a diagnostic report. Close the reader and nothing of it remains, on your phone or anywhere else."
+          p: "Nothing from the scan reaches us. The picture is analysed on your phone by a model bundled inside the app; no server is involved at any point, and there is no address the app could send a picture to. Sanctum does not keep it either — it is not written into the app’s own storage, and neither the image nor anything measured from it appears in analytics or in a diagnostic report. Unless you save or share it yourself, closing the reader leaves nothing behind."
+        },
+        {
+          p: "Saving and sharing are the exception, and both are yours to choose. Save writes the reading — your palm, with the lines drawn over it — into your phone’s own photo gallery, where it becomes an ordinary picture: we have no access to it, and you delete it like any other. Share hands that same image to your phone’s share sheet, and where it goes next is entirely your choice. Neither sends anything to us."
         },
         {
           p: "One point we would rather be precise about than reassuring about. Measuring the shape of a hand is, in some places, capable of being treated as biometric information — even when it happens on your own phone and stays there. Sanctum does not use it to recognise you and could not: there is no account for it to attach to, nothing is kept once you leave the screen, and no record of it ever reaches us. We would rather describe what happens than rely on a label."
