@@ -7,7 +7,8 @@
 export type LegalBlock = { h2?: string; p?: string; list?: string[] };
 
 export type LegalDoc = {
-  kind: "privacy" | "terms";
+  /** Also the URL segment: /legal/[app]/[kind]. */
+  kind: "privacy" | "terms" | "delete-account";
   title: string;
   /** Human-readable publication date shown on the page. */
   updated: string;
