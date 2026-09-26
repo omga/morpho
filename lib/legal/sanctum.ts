@@ -11,7 +11,7 @@ export const sanctum: LegalApp = {
     {
       kind: "privacy",
       title: "Privacy Policy",
-      updated: "23 September 2026",
+      updated: "24 September 2026",
       draft: false,
       blocks: [
         {
@@ -21,23 +21,23 @@ export const sanctum: LegalApp = {
           p: "Sanctum has no accounts. Your readings are calculated on your phone from bundled data and orbital mechanics, and the app works offline."
         },
         {
-          p: "One feature is different, and this policy is careful about it. The AI astrologer sends the computed numbers behind a reading, and the question you type, to be answered by an AI. It does nothing at all until you have read a screen that says so and agreed to it, and even then it never sends your name, anyone else's name, or any birth date. Everything else you tell Sanctum about yourself stays on your device. The sections below say exactly what leaves it."
+          p: "One feature is different, and this policy is careful about it. The AI astrologer sends the computed numbers behind a reading, and the question you type, to be answered by an AI. It does nothing at all until you have read a screen that says so and agreed to it, and even then it never sends your name or anyone else's name. It does not send a birth date either, but the planetary positions it does send are exact enough that a date and time of birth could be worked out from them. Everything else you tell Sanctum about yourself stays on your device. The sections below say exactly what leaves it."
         },
 
         { h2: "What stays on your device" },
         {
-          p: "The following is stored only in Sanctum's private storage on your phone. With the one exception noted in the list, it is never transmitted to us or to anyone else, and we have no way to read it:"
+          p: "The following is stored only in Sanctum's private storage on your phone. With the exceptions noted in the list, it is never transmitted to us or to anyone else, and we have no way to read it:"
         },
         {
           list: [
             "Your name, as you typed it during onboarding",
-            "Your date of birth, and the star sign derived from it",
+            "Your date of birth, and the star sign derived from it. The date itself is never sent, but if you use the AI astrologer, the planetary positions it sends can be used to work it out — see \"The AI astrologer\" below",
             "Your answers to the onboarding questions",
             "Journal entries you write, including the prompt each one answers",
             "Daily energy check-ins",
             "Rituals and sound sessions you complete, and your streak",
             "Oracle cards you have drawn",
-            "Compatibility readings you have opened, including the name and birth date you entered for the other person",
+            "Compatibility readings you have opened, including the name and birth date you entered for the other person. As with your own, their birth date is never sent, but asking the AI astrologer about the reading sends positions it can be worked out from",
             "Conversations with the AI astrologer. The transcript is stored here and on no server. Asking a question does mean sending it to be answered — that is the exception, and \"The AI astrologer\" below says exactly what goes with it and what does not"
           ]
         },
@@ -86,7 +86,7 @@ export const sanctum: LegalApp = {
         },
         {
           list: [
-            "The computed numbers behind the reading on your screen — planetary positions in degrees, the angles between them, compatibility scores, the moon phase, today's transit. All of it is numbers and fixed labels such as \"venus\" or \"square\"",
+            "The computed numbers behind the reading on your screen — planetary positions in degrees, the angles between them, compatibility scores, the moon phase, today's transit. All of it is numbers and fixed labels such as \"venus\" or \"square\". The positions are precise to a tenth of a degree, which is exact enough to work out the date of birth that produced them, and the time of birth where one was entered — yours, and that of anyone you ask about",
             "The question you typed, and the conversation so far, with names removed from them first",
             "A two-letter language code, so the answer comes back in the language you read the app in",
             "A random identifier for your installation, sent as a header so the server can limit how many questions an hour any one installation may ask. It is not an account, it is not linked to anything else in the app, and it is not written to any log"
@@ -98,7 +98,6 @@ export const sanctum: LegalApp = {
         {
           list: [
             "Your name, or the name of anyone you have entered. The data structure that carries a reading has no field a name could occupy, the app rewrites the names it knows out of your question before it is sent, and the server rejects a request containing one",
-            "Any date of birth or time of birth. A chart can be described by positions alone, and the date that produced them is not sent",
             "Your journal, your onboarding answers, or anything from another screen"
           ]
         },
